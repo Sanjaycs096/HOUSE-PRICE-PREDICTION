@@ -1,0 +1,501 @@
+Location,Area,BHK,Bathrooms,Property_Type,Age,Furnishing,Floor_Number,Total_Floors,Parking,Proximity,Price
+Chicago,1491,4,1,Independent,1,Unfurnished,4,5,2,1.9,573200
+Austin,1532,3,3,Villa,0,Unfurnished,5,10,1,2.3,531400
+Phoenix,1992,5,3,Independent,6,Unfurnished,1,5,2,4.2,723400
+Phoenix,2490,3,2,Independent,12,Unfurnished,0,5,0,5.0,698000
+San Diego,1187,5,4,Villa,3,Semi,0,1,0,2.7,607400
+Houston,2975,5,5,Independent,16,Fully,1,2,0,1.7,1010000
+Houston,2547,5,5,Apartment,20,Semi,0,1,2,0.6,904400
+Austin,1455,5,3,Independent,18,Semi,4,5,2,1.8,636000
+Austin,1663,5,2,Independent,14,Fully,13,15,1,2.5,672600
+Chicago,1838,5,4,Villa,17,Semi,1,5,1,3.1,787600
+San Diego,2862,3,1,Apartment,13,Unfurnished,12,15,0,4.7,747400
+Phoenix,2090,2,2,Apartment,6,Unfurnished,13,15,0,4.7,568000
+Los Angeles,2142,5,3,Independent,5,Semi,1,2,2,1.7,823400
+Phoenix,2247,5,3,Villa,7,Semi,0,10,2,4.2,794400
+New York,2794,3,3,Apartment,18,Unfurnished,5,10,0,1.1,833800
+Dallas,2852,2,2,Independent,2,Fully,10,15,0,3.4,760400
+Chicago,1613,3,2,Independent,17,Fully,1,2,0,3.2,612600
+Los Angeles,1466,3,1,Apartment,8,Fully,3,15,0,4.5,558200
+New York,2636,3,3,Independent,1,Unfurnished,1,5,2,1.8,802200
+Austin,2527,3,1,Villa,8,Semi,0,1,2,1.1,700400
+New York,1326,4,2,Independent,13,Unfurnished,2,10,0,3.8,565200
+Los Angeles,1623,4,3,Independent,19,Semi,0,2,2,4.9,669600
+Houston,2447,4,2,Independent,17,Unfurnished,0,1,2,1.8,739400
+New York,1104,4,3,Apartment,12,Semi,8,15,2,2.6,565800
+Los Angeles,1369,3,1,Villa,10,Fully,0,1,0,4.9,538800
+San Diego,1312,5,4,Villa,11,Unfurnished,2,5,0,2.8,612400
+Dallas,2982,2,1,Independent,3,Fully,4,10,2,0.5,761400
+Austin,2263,5,1,Independent,20,Fully,2,5,1,4.3,767600
+Los Angeles,1672,5,3,Apartment,0,Unfurnished,0,1,1,1.6,709400
+Houston,1723,4,1,Independent,14,Fully,2,5,1,4.2,609600
+San Jose,1597,3,2,Villa,16,Unfurnished,0,1,0,0.8,519400
+Seattle,1075,4,3,Apartment,16,Fully,1,5,1,4.5,530000
+Dallas,2286,4,4,Independent,4,Unfurnished,9,15,1,2.7,757200
+Phoenix,2165,2,2,Apartment,13,Semi,0,1,1,3.1,603000
+San Jose,1641,4,3,Independent,6,Unfurnished,0,1,0,3.2,603200
+Los Angeles,2583,5,4,Villa,10,Unfurnished,0,1,0,2.8,916600
+Dallas,2119,3,2,Apartment,14,Fully,1,10,2,4.0,663800
+Austin,1756,5,3,Villa,12,Fully,5,10,1,4.0,716200
+Seattle,2414,3,1,Independent,14,Semi,0,15,0,4.5,677800
+Dallas,1321,2,1,Apartment,6,Unfurnished,3,5,1,4.8,389200
+Houston,2196,5,3,Independent,3,Fully,2,5,1,3.4,804200
+Dallas,1567,2,1,Villa,18,Semi,2,15,2,2.3,458400
+Los Angeles,1417,3,1,Independent,13,Unfurnished,0,1,1,2.3,508400
+Chicago,1651,5,3,Independent,9,Semi,5,10,1,4.5,725200
+Chicago,1575,3,2,Villa,1,Semi,0,10,2,1.0,585000
+Austin,1549,3,3,Apartment,20,Semi,7,10,1,3.0,554800
+New York,2412,5,1,Independent,5,Unfurnished,12,15,1,3.5,807400
+Houston,2203,2,2,Independent,18,Unfurnished,1,5,0,1.9,590600
+San Jose,2933,3,2,Apartment,10,Fully,2,10,1,2.0,826600
+Phoenix,1812,2,1,Independent,0,Semi,0,1,2,1.1,507400
+San Jose,2874,3,1,Villa,7,Fully,8,15,0,2.2,789800
+Chicago,1343,3,1,Independent,1,Fully,6,10,0,3.2,533600
+Phoenix,1038,4,3,Independent,3,Semi,3,5,2,3.8,502600
+San Diego,1111,5,1,Villa,1,Semi,2,10,1,2.1,517200
+Austin,1636,5,5,Independent,10,Unfurnished,2,5,0,1.0,702200
+Seattle,1428,3,1,Apartment,3,Semi,1,2,1,4.1,480600
+Seattle,1780,3,2,Villa,16,Semi,1,2,0,3.0,576000
+New York,1099,2,1,Villa,7,Semi,1,15,1,4.2,414800
+Houston,1995,5,3,Apartment,3,Semi,1,2,2,2.5,744000
+New York,2112,4,4,Independent,5,Fully,5,15,0,0.6,812400
+New York,1351,5,2,Apartment,1,Fully,6,10,0,3.2,660200
+Chicago,2074,4,2,Villa,5,Unfurnished,9,15,1,2.4,714800
+San Diego,2740,4,2,Apartment,9,Semi,0,2,1,4.0,818000
+Chicago,2121,4,4,Villa,12,Semi,0,1,0,2.7,794200
+Houston,1178,5,1,Independent,12,Fully,1,5,2,4.8,550600
+Chicago,2252,3,3,Apartment,3,Semi,8,15,2,3.0,745400
+Houston,2543,5,2,Apartment,18,Fully,0,2,2,2.7,848600
+Houston,1613,3,1,Villa,0,Fully,0,1,0,2.6,537600
+Houston,1400,3,3,Independent,1,Semi,14,15,0,3.6,525000
+New York,1352,4,4,Independent,6,Unfurnished,1,5,0,2.2,620400
+Seattle,1812,5,4,Villa,12,Unfurnished,4,10,1,3.1,712400
+New York,2805,4,1,Villa,12,Semi,3,10,0,4.4,856000
+Houston,1100,3,1,Independent,7,Unfurnished,5,15,0,3.4,395000
+Dallas,1119,4,4,Apartment,5,Unfurnished,3,5,1,4.5,523800
+Houston,1351,3,1,Apartment,6,Unfurnished,0,1,0,0.7,445200
+Los Angeles,1542,3,2,Independent,15,Semi,0,10,2,1.8,578400
+Chicago,2329,4,3,Apartment,14,Unfurnished,2,5,2,1.5,790800
+Chicago,2667,2,2,Apartment,5,Unfurnished,1,2,1,4.1,733400
+New York,1719,5,4,Apartment,3,Semi,2,5,2,2.9,763800
+San Jose,2149,4,4,Independent,16,Unfurnished,9,10,0,2.9,729800
+Houston,1055,2,2,Apartment,0,Unfurnished,6,10,0,1.2,361000
+Dallas,2328,4,3,Villa,16,Semi,0,1,0,3.9,760600
+Chicago,1475,3,1,Villa,6,Fully,8,10,1,1.1,560000
+Chicago,2557,4,2,Villa,5,Semi,1,2,1,3.8,831400
+Dallas,2701,5,4,Villa,10,Unfurnished,0,1,2,1.9,890200
+Austin,1816,5,4,Apartment,12,Semi,1,10,1,4.9,733200
+Houston,2332,4,4,Villa,11,Semi,3,15,0,2.8,786400
+New York,2777,4,1,Independent,10,Unfurnished,2,5,1,1.6,830400
+Phoenix,2013,4,2,Independent,6,Fully,7,15,0,0.9,692600
+Dallas,1053,3,2,Independent,4,Semi,6,10,2,4.0,430600
+Seattle,2551,4,1,Villa,6,Fully,0,2,1,4.9,775200
+Los Angeles,2902,4,3,Apartment,13,Semi,1,2,2,4.7,925400
+Dallas,1196,5,2,Villa,18,Unfurnished,2,5,0,2.7,539200
+New York,2530,3,2,Villa,7,Semi,0,1,2,5.0,776000
+Seattle,1504,5,3,Independent,20,Semi,1,2,0,2.6,645800
+Chicago,1033,4,2,Apartment,4,Unfurnished,0,1,1,3.4,506600
+Seattle,2761,3,3,Independent,16,Fully,2,15,1,1.3,817200
+Seattle,1685,4,2,Villa,17,Fully,4,5,1,4.9,627000
+San Diego,1603,3,3,Villa,10,Semi,0,1,0,1.1,565600
+Los Angeles,2273,2,2,Villa,4,Unfurnished,3,15,2,1.0,654600
+Los Angeles,1876,5,3,Villa,14,Fully,1,2,1,4.6,790200
+San Jose,2357,5,3,Apartment,0,Fully,6,10,0,0.8,836400
+Los Angeles,2643,3,2,Apartment,0,Semi,0,1,1,0.8,798600
+Austin,2525,4,3,Apartment,12,Semi,0,2,0,0.7,800000
+Seattle,1879,3,1,Independent,1,Unfurnished,0,1,0,1.1,550800
+Chicago,1136,3,1,Villa,0,Semi,2,5,2,3.5,472200
+Seattle,1731,2,1,Independent,15,Unfurnished,4,10,1,3.3,471200
+Houston,1046,3,2,Villa,18,Fully,5,10,2,2.3,449200
+Dallas,2864,2,1,Villa,2,Unfurnished,3,5,0,3.8,697800
+Los Angeles,2891,2,2,Independent,0,Fully,0,5,0,1.1,818200
+Dallas,2208,3,3,Apartment,9,Semi,2,10,2,1.1,686600
+Chicago,1945,3,1,Apartment,16,Fully,4,15,0,2.0,654000
+New York,2372,5,5,Independent,5,Unfurnished,0,5,2,2.0,899400
+Chicago,1625,2,2,Independent,7,Fully,3,15,2,4.0,565000
+San Diego,1732,5,2,Apartment,20,Unfurnished,0,5,2,3.3,646400
+Phoenix,1366,3,3,Independent,4,Semi,11,15,0,4.2,518200
+San Jose,2913,2,2,Villa,10,Unfurnished,0,1,0,4.4,732600
+Chicago,1186,5,1,Apartment,14,Unfurnished,2,15,0,4.4,562200
+Dallas,1576,3,1,Villa,15,Fully,0,1,1,2.9,530200
+San Jose,1982,2,2,Villa,11,Fully,1,5,0,1.7,586400
+San Diego,1470,5,4,Apartment,18,Semi,3,15,0,3.8,664000
+New York,1634,4,4,Villa,9,Semi,9,15,1,2.3,696800
+Los Angeles,2343,3,2,Villa,15,Unfurnished,0,1,1,3.0,718600
+Chicago,1641,5,2,Independent,14,Semi,8,10,0,4.1,698200
+Seattle,1955,3,3,Apartment,5,Fully,12,15,2,2.2,656000
+New York,1152,4,4,Apartment,4,Fully,1,2,2,3.0,620400
+San Diego,1673,4,1,Apartment,5,Fully,8,15,2,1.4,599600
+Houston,1242,3,2,Apartment,15,Semi,1,2,0,0.8,468400
+Houston,1865,2,2,Apartment,11,Unfurnished,1,2,1,0.7,523000
+Austin,1952,3,2,Villa,9,Semi,0,10,0,1.7,610400
+Austin,2473,2,1,Independent,13,Unfurnished,0,1,2,2.3,619600
+Los Angeles,2998,2,2,Independent,18,Semi,2,5,2,2.9,819600
+New York,1494,3,1,Apartment,7,Unfurnished,0,2,1,4.7,523800
+San Jose,2512,5,3,Independent,10,Semi,8,10,0,5.0,847400
+Phoenix,2724,5,2,Independent,10,Unfurnished,0,10,2,3.8,844800
+Phoenix,1973,3,1,Apartment,2,Fully,6,15,1,3.7,609600
+San Jose,2872,2,2,Villa,9,Fully,9,15,2,4.3,764400
+Dallas,1423,4,2,Apartment,8,Semi,1,2,1,3.5,554600
+Seattle,2038,4,3,Villa,15,Unfurnished,3,5,1,1.9,682600
+Los Angeles,2523,4,3,Independent,20,Unfurnished,9,10,0,4.9,829600
+Los Angeles,2291,2,1,Apartment,3,Unfurnished,8,10,1,2.9,633200
+Houston,2325,4,4,Villa,15,Unfurnished,0,1,2,3.3,765000
+Los Angeles,1417,3,3,Villa,8,Fully,6,10,1,3.4,598400
+Austin,2506,3,1,Apartment,5,Fully,0,1,0,4.6,716200
+Houston,1444,2,1,Villa,20,Semi,0,2,2,2.7,433800
+Phoenix,1265,3,2,Villa,9,Semi,1,2,1,4.5,473000
+San Jose,2943,5,4,Villa,18,Semi,2,10,2,4.6,958600
+Seattle,1334,2,2,Apartment,1,Fully,1,2,0,1.5,456800
+Seattle,1520,2,2,Independent,2,Semi,1,2,1,3.9,474000
+San Jose,2821,3,3,Apartment,7,Semi,9,10,0,3.6,809200
+New York,1276,3,3,Villa,14,Semi,6,15,0,3.5,550200
+Austin,2652,2,2,Apartment,0,Unfurnished,0,2,0,3.7,680400
+New York,2610,3,2,Villa,11,Fully,0,1,0,1.9,812000
+New York,1443,2,2,Villa,7,Unfurnished,7,10,1,1.3,488600
+Dallas,1013,4,3,Apartment,5,Semi,0,5,1,1.3,497600
+San Jose,1454,2,2,Independent,13,Fully,1,2,0,2.6,480800
+New York,2894,5,1,Independent,4,Fully,0,1,0,2.4,943800
+Phoenix,2430,2,2,Villa,8,Unfurnished,2,10,0,2.7,636000
+Austin,1680,2,2,Villa,10,Semi,0,1,1,4.7,506000
+Austin,1361,2,1,Apartment,8,Semi,0,1,0,1.3,417200
+Chicago,2825,5,4,Apartment,15,Fully,0,1,2,1.7,1005000
+Los Angeles,2214,4,4,Apartment,20,Fully,1,2,2,0.7,832800
+Houston,1310,3,3,Villa,16,Unfurnished,0,1,1,4.8,487000
+San Diego,1430,4,1,Independent,12,Unfurnished,6,10,1,1.6,511000
+Seattle,2303,5,4,Apartment,19,Fully,0,1,1,2.4,850600
+New York,1356,4,2,Independent,17,Fully,3,10,1,1.4,611200
+Austin,1154,3,2,Independent,7,Unfurnished,0,1,1,1.0,430800
+San Jose,2509,5,4,Apartment,6,Fully,13,15,1,1.9,891800
+Los Angeles,2377,3,2,Independent,2,Semi,12,15,0,1.9,745400
+Los Angeles,1366,4,1,Apartment,8,Unfurnished,8,15,2,2.4,548200
+Houston,2763,2,1,Apartment,11,Fully,0,1,2,0.7,717600
+Dallas,2116,3,2,Independent,6,Fully,2,5,0,1.1,663200
+Los Angeles,2473,3,3,Independent,15,Fully,13,15,1,4.5,809600
+Chicago,2877,5,2,Independent,2,Fully,0,1,2,4.5,965400
+Seattle,2743,2,2,Apartment,2,Semi,1,10,2,4.6,718600
+Austin,1268,4,2,Independent,5,Semi,1,2,1,5.0,523600
+Los Angeles,2225,5,1,Villa,4,Unfurnished,1,2,1,3.0,770000
+San Diego,1911,4,1,Apartment,8,Unfurnished,0,1,0,2.6,607200
+New York,2832,4,1,Apartment,1,Unfurnished,1,2,1,2.5,841400
+Los Angeles,1670,4,2,Villa,6,Unfurnished,4,5,1,3.5,634000
+Seattle,2050,2,1,Apartment,11,Semi,0,1,2,1.3,555000
+Los Angeles,1285,3,3,Apartment,14,Unfurnished,8,10,2,3.7,532000
+San Diego,1524,3,1,Villa,0,Fully,9,10,2,4.2,519800
+Chicago,2778,2,2,Villa,13,Unfurnished,4,5,0,2.2,755600
+Houston,1570,5,3,Independent,11,Unfurnished,0,2,0,2.8,639000
+San Diego,1047,4,4,Independent,5,Semi,0,5,2,1.7,529400
+Phoenix,2966,2,2,Independent,12,Semi,1,2,0,4.1,763200
+Chicago,1200,2,2,Apartment,8,Semi,0,1,0,4.4,460000
+San Diego,2800,2,1,Villa,11,Semi,4,5,2,4.7,705000
+Austin,2069,3,2,Villa,1,Unfurnished,0,5,0,3.5,613800
+Seattle,1820,2,2,Independent,20,Semi,7,15,1,2.0,534000
+San Jose,2717,4,3,Apartment,17,Fully,1,5,0,1.6,858400
+Houston,1204,2,1,Apartment,3,Unfurnished,1,2,2,1.5,365800
+San Diego,1363,5,3,Villa,17,Unfurnished,0,10,1,2.4,597600
+Dallas,2203,4,2,Apartment,2,Semi,1,2,2,1.0,710600
+Houston,1337,4,2,Independent,4,Unfurnished,0,2,1,1.3,517400
+Austin,2378,3,2,Apartment,18,Semi,5,10,2,3.0,695600
+San Diego,2336,4,4,Villa,4,Unfurnished,0,1,1,1.6,767200
+Seattle,2113,2,2,Villa,20,Fully,0,1,0,1.4,612600
+San Jose,1453,3,2,Independent,14,Fully,0,1,0,4.3,530600
+Houston,1853,4,1,Villa,10,Fully,0,15,1,3.0,635600
+Los Angeles,2589,4,2,Independent,19,Fully,1,2,2,4.2,857800
+Austin,2689,2,1,Independent,16,Unfurnished,2,10,0,4.5,662800
+Dallas,2141,2,2,Villa,7,Unfurnished,0,10,2,1.1,578200
+Dallas,1307,5,1,Apartment,15,Fully,3,15,0,2.8,576400
+Houston,2717,3,3,Villa,10,Unfurnished,3,10,0,1.8,768400
+Houston,2725,4,2,Independent,1,Fully,1,2,0,1.5,835000
+Phoenix,2064,2,1,Villa,18,Unfurnished,1,2,1,1.9,537800
+Seattle,2542,4,3,Villa,6,Fully,3,10,0,3.0,823400
+Los Angeles,2791,5,5,Villa,3,Unfurnished,10,15,0,4.3,983200
+Chicago,1439,5,3,Apartment,17,Semi,0,2,0,3.1,682800
+Dallas,1650,2,2,Independent,19,Semi,1,2,0,2.4,500000
+Austin,2292,2,2,Villa,12,Unfurnished,2,10,2,2.9,608400
+New York,2631,2,2,Independent,19,Semi,0,5,2,4.2,746200
+Dallas,2813,5,3,Villa,6,Unfurnished,4,15,0,0.6,887600
+Los Angeles,2237,5,3,Villa,5,Fully,0,2,2,1.3,862400
+San Jose,1585,2,2,Independent,0,Fully,0,1,1,4.2,507000
+Phoenix,2089,2,2,Independent,4,Fully,7,15,1,2.2,607800
+Chicago,1122,5,4,Independent,5,Unfurnished,0,1,1,1.0,624400
+Chicago,2562,5,5,Villa,1,Fully,4,10,2,1.4,977400
+Chicago,2972,3,2,Independent,3,Unfurnished,0,15,1,3.5,844400
+Chicago,1518,3,2,Independent,20,Semi,8,15,0,1.1,573600
+Dallas,1835,3,2,Villa,15,Semi,0,15,1,4.7,587000
+Seattle,1281,4,1,Apartment,1,Unfurnished,6,10,2,2.6,481200
+Houston,1827,3,3,Villa,9,Fully,7,15,2,2.8,630400
+Los Angeles,2813,2,1,Independent,14,Semi,9,10,0,0.9,757600
+Chicago,2065,4,3,Independent,9,Unfurnished,1,2,1,3.1,738000
+Austin,1549,4,2,Apartment,4,Fully,8,10,2,4.1,599800
+New York,2401,5,3,Villa,18,Unfurnished,1,2,2,2.9,855200
+Los Angeles,1143,2,1,Apartment,16,Unfurnished,0,5,2,2.6,403600
+San Diego,1737,2,2,Independent,9,Semi,1,2,0,0.5,517400
+Dallas,1305,3,1,Apartment,12,Fully,7,10,1,3.8,476000
+Los Angeles,1244,5,1,Villa,6,Unfurnished,0,1,2,2.4,573800
+Los Angeles,1140,3,3,Independent,7,Fully,1,15,0,1.8,543000
+Houston,2266,2,1,Independent,6,Fully,11,15,1,1.9,618200
+Houston,2983,5,2,Villa,2,Unfurnished,0,1,2,2.4,896600
+Houston,2699,2,2,Villa,15,Fully,7,15,0,1.5,729800
+New York,1674,4,1,Apartment,6,Unfurnished,8,10,1,3.5,609800
+Los Angeles,1321,2,1,Independent,4,Semi,0,1,1,0.8,459200
+Seattle,2115,5,1,Apartment,6,Fully,0,2,1,4.9,738000
+Houston,2005,2,1,Villa,13,Semi,0,1,2,3.6,546000
+Seattle,1437,2,1,Independent,9,Fully,1,2,0,1.9,452400
+Chicago,2420,3,3,Villa,4,Fully,0,2,1,4.8,799000
+Dallas,2966,5,2,Independent,10,Semi,11,15,1,2.1,913200
+Houston,2220,2,2,Apartment,20,Unfurnished,1,2,0,2.8,594000
+Houston,1120,3,3,Apartment,5,Unfurnished,9,15,0,1.9,449000
+San Diego,2026,3,3,Apartment,9,Fully,0,1,1,2.0,670200
+San Diego,2062,3,2,Independent,9,Fully,0,15,0,1.9,652400
+Austin,2544,5,4,Independent,9,Semi,13,15,1,2.3,878800
+New York,2970,4,1,Independent,13,Unfurnished,3,5,0,1.8,869000
+Los Angeles,1822,4,3,Villa,16,Fully,1,2,0,2.3,729400
+Dallas,1941,5,5,Independent,7,Fully,0,1,0,2.5,803200
+Phoenix,1707,2,2,Independent,0,Semi,1,2,2,0.9,511400
+Houston,1828,4,4,Villa,20,Unfurnished,1,2,0,2.2,665600
+Dallas,1265,4,2,Villa,8,Fully,3,5,2,4.2,543000
+Phoenix,2466,4,2,Apartment,17,Semi,3,5,2,3.6,763200
+New York,2745,4,4,Apartment,9,Semi,9,10,2,3.5,919000
+San Diego,2598,5,1,Villa,12,Semi,0,15,1,3.1,814600
+Seattle,2689,4,1,Apartment,0,Semi,0,2,2,1.2,782800
+Dallas,1520,3,2,Villa,18,Fully,4,10,0,2.0,544000
+Houston,2825,2,2,Apartment,7,Unfurnished,0,2,0,2.9,715000
+Chicago,1390,4,3,Villa,3,Unfurnished,3,15,1,4.3,603000
+San Jose,2627,2,2,Apartment,4,Semi,0,10,2,4.9,695400
+San Jose,1186,2,2,Villa,1,Unfurnished,0,1,1,4.9,387200
+Los Angeles,1730,2,2,Villa,11,Unfurnished,5,10,1,4.4,546000
+San Diego,2451,5,5,Villa,20,Unfurnished,0,2,1,4.0,865200
+Dallas,1865,5,3,Independent,1,Fully,5,10,1,4.3,738000
+San Jose,1484,4,2,Apartment,13,Fully,2,5,1,3.6,586800
+Austin,1652,5,4,Apartment,10,Semi,3,5,0,1.6,700400
+Los Angeles,1632,2,2,Independent,14,Unfurnished,5,15,1,1.8,526400
+Seattle,1885,4,4,Independent,11,Fully,3,5,1,2.2,717000
+Seattle,1874,3,2,Apartment,15,Semi,3,5,0,2.5,594800
+San Diego,2570,3,3,Independent,0,Semi,1,2,2,2.8,759000
+San Diego,1672,2,2,Apartment,7,Fully,2,5,0,4.6,524400
+Seattle,1155,2,2,Villa,3,Fully,9,15,2,4.1,421000
+San Jose,1291,4,2,Independent,0,Fully,0,1,1,2.8,548200
+Dallas,2430,5,4,Independent,10,Unfurnished,2,5,2,4.9,836000
+New York,2693,4,4,Villa,19,Unfurnished,0,1,2,3.5,888600
+Phoenix,2844,5,5,Apartment,9,Semi,4,5,2,3.2,963800
+New York,2608,4,1,Villa,11,Unfurnished,6,10,2,4.9,796600
+Chicago,1162,4,2,Independent,1,Semi,0,10,2,2.0,552400
+San Diego,2925,3,3,Independent,10,Unfurnished,4,5,0,3.1,810000
+Houston,1417,3,2,Apartment,12,Unfurnished,0,5,0,1.7,483400
+Chicago,2024,4,1,Apartment,19,Semi,13,15,2,1.5,699800
+Austin,2270,2,2,Villa,13,Unfurnished,0,2,1,3.4,604000
+Houston,2745,2,1,Independent,5,Unfurnished,13,15,2,3.0,674000
+Phoenix,2531,3,1,Independent,20,Unfurnished,5,15,1,3.0,681200
+Austin,2763,3,1,Apartment,3,Semi,8,15,2,4.2,747600
+New York,1142,3,1,Villa,10,Semi,0,2,1,3.1,473400
+San Jose,1286,4,3,Apartment,1,Fully,7,15,2,3.7,572200
+Dallas,1246,4,1,Independent,12,Semi,2,5,1,4.6,494200
+Houston,2349,5,5,Independent,13,Fully,0,1,1,3.1,884800
+Austin,2727,3,3,Apartment,7,Unfurnished,7,15,2,3.9,770400
+Austin,1588,5,5,Villa,18,Semi,0,1,1,2.0,712600
+Chicago,2322,2,1,Villa,11,Fully,3,10,2,5.0,679400
+Los Angeles,1011,5,4,Independent,3,Unfurnished,3,10,0,1.9,602200
+Seattle,1264,2,1,Apartment,16,Unfurnished,3,15,0,2.1,377800
+Dallas,1877,4,1,Apartment,5,Semi,9,15,2,1.6,620400
+Houston,1454,2,2,Villa,8,Unfurnished,1,10,1,3.0,440800
+Los Angeles,2154,3,1,Apartment,2,Semi,0,5,0,4.0,675800
+Los Angeles,1752,3,1,Apartment,2,Unfurnished,8,10,0,1.8,575400
+Phoenix,1141,5,3,Independent,17,Unfurnished,0,2,1,1.7,553200
+Seattle,1568,4,3,Independent,2,Fully,1,2,2,2.1,628600
+Chicago,2174,3,3,Independent,8,Fully,1,2,0,2.5,749800
+New York,1420,5,2,Apartment,3,Semi,3,5,2,0.8,654000
+Seattle,1064,2,1,Villa,16,Unfurnished,1,5,2,1.6,337800
+Austin,2237,3,2,Independent,3,Unfurnished,2,10,0,1.2,647400
+Dallas,2290,2,2,Villa,5,Unfurnished,1,5,0,1.4,608000
+Dallas,1178,4,1,Independent,5,Fully,10,15,0,1.2,500600
+Dallas,1903,5,5,Independent,0,Semi,2,10,1,4.9,775600
+Phoenix,2442,2,1,Independent,14,Fully,0,1,0,1.1,653400
+Phoenix,1325,5,3,Independent,9,Unfurnished,1,2,2,3.1,590000
+Austin,2619,2,1,Apartment,0,Unfurnished,3,10,1,2.9,648800
+San Diego,1311,2,2,Independent,19,Semi,0,1,2,1.8,432200
+Houston,2595,4,1,Villa,14,Unfurnished,2,5,1,2.1,744000
+New York,1956,5,3,Apartment,14,Semi,2,15,2,4.3,786200
+New York,2970,3,1,Independent,2,Semi,0,2,0,1.9,839000
+Houston,1137,5,5,Villa,2,Fully,3,10,0,4.8,642400
+San Jose,1494,3,1,Independent,7,Unfurnished,4,5,2,2.4,473800
+Los Angeles,1291,3,1,Apartment,14,Semi,3,10,0,1.4,503200
+San Diego,1591,2,2,Independent,8,Semi,4,5,0,2.8,488200
+Austin,1694,3,1,Independent,5,Unfurnished,8,15,2,4.7,513800
+San Jose,1019,5,2,Independent,13,Semi,1,2,0,4.4,523800
+Chicago,1682,4,4,Villa,19,Fully,3,15,2,4.3,726400
+Phoenix,2812,5,1,Independent,16,Fully,0,1,0,1.5,877400
+Chicago,1242,5,2,Apartment,16,Semi,0,1,0,2.5,618400
+Chicago,2066,5,1,Independent,6,Fully,0,2,0,2.3,778200
+San Jose,1058,2,2,Independent,12,Unfurnished,4,5,0,4.1,361600
+San Diego,2789,4,4,Independent,3,Semi,0,5,0,4.8,877800
+Dallas,1169,4,4,Apartment,9,Unfurnished,3,5,1,3.5,533800
+Dallas,2954,2,1,Independent,17,Unfurnished,0,1,0,4.5,715800
+Seattle,2751,4,2,Independent,5,Fully,0,10,2,0.5,840200
+Phoenix,1467,2,2,Villa,7,Fully,1,2,0,4.4,483400
+Phoenix,2607,3,3,Independent,20,Fully,5,10,1,4.3,786400
+Austin,2392,5,1,Villa,7,Unfurnished,2,15,2,2.4,753400
+Seattle,2597,3,3,Apartment,5,Unfurnished,11,15,0,3.2,744400
+Houston,2340,5,2,Villa,2,Unfurnished,0,1,2,1.9,768000
+Chicago,2078,2,2,Independent,9,Fully,7,15,1,2.2,655600
+Chicago,1456,5,1,Villa,6,Fully,5,15,1,4.0,656200
+Seattle,2106,2,2,Apartment,2,Semi,0,10,0,1.2,591200
+Seattle,2293,4,1,Apartment,7,Fully,0,2,1,4.0,723600
+San Jose,2655,4,2,Villa,18,Fully,0,1,2,4.5,821000
+New York,1213,2,1,Villa,15,Semi,3,10,0,2.0,437600
+Houston,1800,3,1,Villa,18,Semi,0,5,1,1.6,555000
+San Jose,1699,4,4,Independent,10,Semi,0,1,1,1.5,659800
+Dallas,1470,5,1,Independent,19,Semi,6,10,0,4.6,589000
+Seattle,1565,3,2,Independent,7,Unfurnished,2,5,2,3.1,513000
+Dallas,1132,4,4,Independent,7,Semi,1,2,0,3.0,546400
+Chicago,1504,5,5,Villa,12,Fully,12,15,1,0.7,765800
+San Diego,1698,2,1,Independent,15,Semi,3,5,0,4.8,484600
+New York,1016,4,1,Independent,18,Semi,6,10,0,3.4,498200
+Chicago,2055,5,1,Independent,12,Unfurnished,4,5,2,2.9,736000
+New York,2703,2,2,Apartment,14,Unfurnished,1,2,2,1.5,740600
+Dallas,2693,5,4,Villa,1,Unfurnished,4,15,0,3.8,888600
+Phoenix,1958,4,3,Apartment,12,Fully,0,2,1,1.9,706600
+San Jose,1102,5,3,Independent,10,Fully,0,1,0,3.4,585400
+Houston,2581,3,2,Apartment,19,Fully,1,2,2,4.2,756200
+Seattle,2077,5,3,Independent,12,Semi,0,10,1,1.2,760400
+Dallas,2314,4,2,Independent,2,Fully,7,10,1,1.3,752800
+Los Angeles,1051,3,2,Apartment,20,Fully,12,15,1,4.6,500200
+San Diego,2835,2,1,Apartment,13,Fully,0,1,0,1.2,732000
+San Jose,2938,5,3,Apartment,17,Fully,14,15,1,2.6,952600
+Seattle,2281,2,1,Villa,15,Unfurnished,0,1,2,4.2,581200
+Los Angeles,1684,2,2,Independent,10,Semi,4,5,2,3.9,556800
+Seattle,2367,5,2,Apartment,7,Semi,2,5,1,4.3,793400
+Los Angeles,2425,5,2,Villa,0,Unfurnished,0,2,2,2.2,835000
+Houston,2520,3,2,Apartment,0,Semi,0,2,0,1.2,724000
+Los Angeles,2303,4,4,Apartment,14,Semi,0,1,1,2.1,830600
+New York,1231,4,4,Villa,1,Unfurnished,1,10,1,3.3,596200
+Chicago,1719,3,1,Independent,15,Unfurnished,12,15,2,0.9,568800
+Phoenix,1155,3,3,Apartment,6,Unfurnished,0,1,1,2.5,456000
+Phoenix,2268,3,3,Apartment,17,Fully,2,5,1,2.0,718600
+New York,2345,4,2,Villa,13,Fully,0,5,2,1.9,809000
+Dallas,2895,3,3,Apartment,7,Fully,8,10,1,3.7,844000
+Houston,2745,4,3,Villa,16,Fully,3,5,0,1.5,864000
+Los Angeles,1683,4,1,Villa,11,Unfurnished,1,2,0,2.6,611600
+Los Angeles,2923,3,2,Villa,7,Unfurnished,0,1,0,3.9,834600
+Houston,1962,4,4,Villa,19,Fully,0,2,0,1.5,732400
+San Diego,2359,3,2,Independent,20,Fully,9,10,0,1.9,711800
+Austin,2963,5,4,Apartment,17,Semi,0,5,2,2.5,962600
+Dallas,1228,3,3,Apartment,10,Fully,11,15,0,2.6,510600
+Chicago,1751,5,4,Villa,11,Semi,0,1,2,4.9,770200
+Austin,1315,2,2,Independent,14,Unfurnished,11,15,2,0.9,413000
+Seattle,2449,3,2,Independent,19,Fully,13,15,2,4.7,729800
+Los Angeles,2189,5,2,Apartment,3,Unfurnished,1,2,2,3.4,787800
+Chicago,1729,3,1,Independent,20,Unfurnished,2,5,2,3.0,570800
+New York,2148,5,2,Apartment,2,Unfurnished,1,15,0,4.6,779600
+San Diego,1506,2,1,Independent,9,Semi,0,2,1,1.0,446200
+Phoenix,1233,3,2,Apartment,12,Semi,0,1,1,0.8,466600
+Seattle,2361,4,1,Villa,2,Semi,12,15,0,1.0,717200
+Dallas,1613,3,2,Apartment,3,Unfurnished,4,10,1,2.7,522600
+Seattle,1866,2,2,Apartment,10,Unfurnished,2,15,2,2.5,523200
+Dallas,1780,2,1,Apartment,13,Semi,2,15,2,4.5,501000
+Chicago,1305,4,4,Independent,20,Fully,1,2,0,3.1,651000
+Seattle,1489,2,2,Villa,11,Fully,1,10,2,4.9,487800
+Dallas,2666,2,2,Apartment,0,Semi,0,2,0,3.6,703200
+San Diego,2891,4,3,Apartment,0,Fully,7,10,1,4.2,893200
+Phoenix,2802,5,1,Villa,9,Unfurnished,0,10,0,3.0,835400
+Los Angeles,2007,2,2,Independent,20,Unfurnished,3,15,1,3.2,601400
+Austin,2873,3,3,Villa,6,Unfurnished,0,1,1,4.2,799600
+Los Angeles,1556,2,1,Villa,1,Semi,1,2,0,2.1,506200
+Los Angeles,2996,3,3,Villa,3,Fully,0,2,0,3.0,914200
+New York,2662,2,1,Villa,6,Fully,0,1,0,2.7,747400
+Dallas,1754,2,2,Villa,19,Fully,7,10,2,1.0,540800
+San Jose,2506,2,1,Independent,1,Fully,1,10,2,4.8,666200
+Phoenix,1673,2,2,Independent,16,Unfurnished,0,1,2,2.1,484600
+San Jose,1624,5,3,Villa,16,Fully,1,2,1,3.3,689800
+Seattle,1127,2,1,Apartment,6,Fully,2,10,0,1.1,390400
+Seattle,2007,5,5,Apartment,14,Semi,0,5,1,2.1,796400
+Houston,2469,5,3,Apartment,18,Unfurnished,7,10,1,3.6,818800
+Los Angeles,1665,5,5,Apartment,0,Fully,0,1,2,1.7,798000
+Los Angeles,1562,3,2,Villa,4,Fully,2,10,2,2.9,602400
+Phoenix,1761,2,1,Independent,3,Unfurnished,1,15,1,4.2,477200
+Phoenix,2093,3,3,Villa,10,Semi,7,15,2,4.7,663600
+Seattle,1215,4,1,Apartment,11,Semi,2,5,0,3.7,488000
+Los Angeles,2541,2,1,Independent,11,Semi,0,2,1,1.8,703200
+San Jose,1155,2,2,Independent,0,Unfurnished,5,15,1,2.8,381000
+Seattle,1339,2,2,Apartment,17,Semi,1,10,1,2.3,437800
+Seattle,2716,5,4,Apartment,2,Fully,0,2,2,1.9,933200
+Austin,2034,4,3,Independent,12,Unfurnished,4,15,2,2.1,681800
+San Jose,1940,5,1,Villa,18,Unfurnished,3,5,0,2.4,663000
+Dallas,1018,4,4,Villa,7,Fully,6,15,1,4.2,543600
+Dallas,2340,4,3,Independent,14,Fully,0,2,1,4.6,783000
+Phoenix,1909,3,1,Independent,9,Semi,3,15,0,4.8,576800
+San Jose,1113,4,3,Villa,6,Fully,0,1,2,4.9,537600
+Seattle,2801,5,1,Independent,1,Semi,0,1,0,4.7,855200
+Dallas,1769,2,2,Apartment,17,Unfurnished,1,2,2,0.6,503800
+San Diego,2496,2,1,Apartment,1,Semi,5,10,0,2.0,644200
+Houston,1109,2,1,Apartment,16,Unfurnished,0,2,1,0.5,346800
+San Jose,2883,5,5,Villa,5,Semi,0,2,2,2.7,971600
+New York,1319,4,2,Villa,12,Fully,1,15,0,2.7,603800
+Dallas,1710,4,4,Villa,18,Unfurnished,5,15,0,1.1,642000
+Austin,1109,4,2,Apartment,9,Fully,0,1,2,0.6,511800
+Austin,1696,3,1,Villa,17,Fully,12,15,0,1.7,554200
+Austin,2216,3,1,Villa,4,Semi,0,1,0,4.8,638200
+Seattle,2904,3,2,Villa,5,Semi,7,15,2,0.7,800800
+New York,2606,3,2,Independent,16,Unfurnished,0,1,0,4.6,771200
+Phoenix,1930,5,5,Independent,14,Fully,1,10,1,3.7,801000
+San Jose,2799,2,1,Villa,8,Fully,5,10,1,2.4,724800
+Seattle,1886,2,2,Villa,20,Fully,1,2,0,3.5,567200
+Seattle,1296,5,1,Independent,3,Fully,1,5,2,3.8,574200
+San Diego,2176,4,1,Apartment,20,Unfurnished,2,5,1,0.5,660200
+Phoenix,1286,3,3,Apartment,0,Fully,0,1,1,4.8,522200
+Dallas,2695,4,4,Apartment,0,Fully,1,15,0,1.2,879000
+Dallas,2135,4,4,Independent,5,Unfurnished,12,15,0,1.2,727000
+Los Angeles,1649,3,3,Villa,1,Fully,0,1,0,2.7,644800
+Phoenix,2344,2,1,Apartment,10,Fully,0,2,0,2.7,633800
+San Jose,1805,2,1,Apartment,3,Fully,2,5,0,1.5,526000
+Houston,2655,5,2,Independent,10,Fully,13,15,1,1.8,871000
+Seattle,2965,4,1,Independent,20,Unfurnished,3,10,1,1.5,818000
+Phoenix,1318,4,3,Independent,19,Fully,0,1,0,1.0,578600
+Seattle,1764,2,2,Villa,8,Unfurnished,0,1,0,0.9,502800
+Los Angeles,2126,2,2,Villa,4,Unfurnished,1,15,0,3.2,625200
+Dallas,2630,3,3,Apartment,9,Fully,0,2,0,4.6,791000
+Seattle,1892,2,2,Independent,13,Fully,2,15,2,3.1,568400
+San Diego,2870,4,4,Villa,16,Unfurnished,10,15,0,1.6,874000
+Dallas,2789,5,3,Villa,13,Unfurnished,0,1,0,1.3,882800
+Austin,2097,2,2,Independent,19,Fully,2,5,2,1.0,609400
+Los Angeles,1586,2,1,Apartment,8,Fully,7,15,2,3.6,532200
+Chicago,2960,2,2,Independent,7,Semi,0,2,0,2.3,812000
+Dallas,1932,3,3,Independent,10,Semi,0,1,2,1.3,631400
+Chicago,2853,4,4,Villa,8,Unfurnished,1,10,1,2.0,920600
+Los Angeles,2309,3,1,Apartment,18,Fully,1,5,2,4.3,726800
+San Jose,2733,4,4,Apartment,0,Unfurnished,0,5,1,3.1,846600
+Los Angeles,1589,3,1,Independent,4,Fully,5,15,0,4.0,582800
+Chicago,2729,2,2,Independent,18,Fully,9,15,1,1.4,785800
+San Diego,2245,5,5,Independent,11,Fully,0,1,1,3.0,864000
+San Diego,1702,2,1,Villa,16,Semi,7,10,1,3.8,485400
+Dallas,2433,4,4,Independent,1,Semi,7,10,1,2.3,806600
+Houston,1930,3,1,Independent,0,Unfurnished,13,15,1,2.3,561000
+Dallas,2374,5,5,Villa,5,Fully,3,5,1,4.2,889800
+Chicago,1317,3,2,Villa,18,Unfurnished,1,2,1,4.4,513400
+Dallas,2445,4,3,Independent,13,Fully,3,5,1,3.7,804000
+Chicago,2553,3,3,Villa,0,Unfurnished,5,10,1,3.7,785600
+San Jose,2747,2,2,Apartment,4,Semi,0,1,1,2.7,719400
+New York,2417,2,1,Villa,3,Semi,11,15,2,5.0,678400
+Austin,2541,3,3,Independent,1,Semi,4,5,1,2.6,753200
+San Diego,2768,5,4,Apartment,14,Unfurnished,0,10,1,4.0,903600
+New York,1314,4,3,Independent,9,Semi,2,5,0,3.3,607800
+Seattle,2577,4,3,Apartment,3,Semi,9,10,1,3.9,810400
+Austin,2835,5,2,Independent,1,Semi,2,5,1,2.9,887000
+Houston,1769,2,2,Independent,9,Unfurnished,9,15,2,3.0,503800
+Phoenix,2584,5,3,Apartment,11,Fully,3,5,1,4.0,881800
+Austin,2505,3,2,Villa,0,Unfurnished,8,10,0,4.4,701000
+Austin,2466,3,2,Apartment,2,Semi,0,2,2,1.0,713200
+San Diego,2455,2,2,Villa,10,Unfurnished,14,15,0,2.4,641000
+Seattle,2774,2,2,Villa,20,Semi,11,15,2,3.8,724800
+San Jose,1470,3,3,Independent,6,Unfurnished,0,1,1,3.0,519000
+Seattle,2208,4,3,Villa,2,Fully,1,2,0,3.4,756600
+Phoenix,1371,4,1,Independent,7,Semi,0,2,2,3.8,519200
+San Jose,2142,5,3,Independent,16,Unfurnished,0,1,0,1.8,753400
+New York,1052,3,2,Villa,14,Unfurnished,4,5,2,3.8,460400
+Dallas,1870,4,3,Villa,12,Unfurnished,2,5,2,1.5,649000
+Dallas,2037,2,2,Independent,17,Fully,0,1,0,3.4,597400
+Los Angeles,1153,3,3,Villa,11,Fully,1,2,2,3.6,545600
+Los Angeles,1160,3,1,Villa,3,Fully,1,2,1,0.9,497000
+Seattle,1553,5,3,Independent,0,Unfurnished,6,10,1,3.4,635600
+Phoenix,1781,3,1,Apartment,12,Unfurnished,8,15,2,0.7,531200
+Seattle,1488,5,5,Villa,10,Fully,0,1,2,3.6,712600
+Los Angeles,2588,3,3,Apartment,1,Semi,9,10,1,4.5,812600

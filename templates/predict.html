@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Predict</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: url("{{ url_for('static', filename='backgrounds/ab3.jpg') }}") no-repeat center center fixed;
+      background-size: cover;
+      padding: 40px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.5em;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: slideIn 0.7s ease-in-out;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      width: 100%;
+      max-width: 1000px;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group label {
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group select {
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      width: 100%;
+    }
+
+    .bottom-section {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .upload-section {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      text-align: center;
+      width: 320px;
+      position: relative;
+    }
+
+    .upload-box {
+      border: 2px dashed #007bff;
+      padding: 40px 20px;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+      position: relative;
+    }
+
+    .upload-box:hover {
+      background-color: #f0f8ff;
+    }
+
+    .upload-box.dragover {
+      background-color: #e6f2ff;
+    }
+
+    .upload-box input[type="file"] {
+      display: none;
+    }
+
+    .upload-label {
+      color: #666;
+      font-size: 0.95em;
+      margin-top: 15px;
+    }
+
+    #preview-image {
+      display: none;
+      max-width: 100%;
+      margin-top: 15px;
+      border-radius: 12px;
+    }
+
+    #remove-image {
+      display: none;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 20px;
+      color: red;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #remove-image:hover {
+      color: darkred;
+    }
+
+    .prediction-area {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      width: 320px;
+    }
+
+    .result {
+      font-size: 1.2em;
+      margin-bottom: 20px;
+    }
+
+    .result label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .uploaded-image {
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    .uploaded-image img {
+      width: 100%;
+      border-radius: 12px;
+      margin-top: 10px;
+    }
+
+    button[type="submit"] {
+      padding: 12px 30px;
+      background: green;
+      color: white;
+      border: none;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background: darkgreen;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bottom-section {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .upload-section, .prediction-area {
+        width: 100%;
+        max-width: 90%;
+      }
+    }
+  </style>
+
+  <script>
+    window.onload = () => {
+      const fileInput = document.getElementById("image-upload");
+      const uploadBox = document.getElementById("upload-box");
+      const previewImage = document.getElementById("preview-image");
+      const removeImage = document.getElementById("remove-image");
+      const textInputs = document.querySelectorAll(".grid input, .grid select");
+
+      fileInput.addEventListener("change", () => {
+        const file = fileInput.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            previewImage.src = e.target.result;
+            previewImage.style.display = "block";
+            removeImage.style.display = "block";
+          };
+          reader.readAsDataURL(file);
+        }
+
+        const isImageUploaded = fileInput.files.length > 0;
+        textInputs.forEach(input => input.disabled = isImageUploaded);
+      });
+
+      removeImage.addEventListener("click", () => {
+        fileInput.value = "";
+        previewImage.style.display = "none";
+        removeImage.style.display = "none";
+        textInputs.forEach(input => input.disabled = false);
+      });
+
+      textInputs.forEach(input => {
+        input.addEventListener("input", () => {
+          const anyFilled = Array.from(textInputs).some(inp => inp.value.trim() !== "");
+          fileInput.disabled = anyFilled;
+        });
+      });
+
+      uploadBox.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        uploadBox.classList.add("dragover");
+      });
+
+      uploadBox.addEventListener("dragleave", () => {
+        uploadBox.classList.remove("dragover");
+      });
+
+      uploadBox.addEventListener("drop", (e) => {
+        e.preventDefault();
+        uploadBox.classList.remove("dragover");
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+          fileInput.files = files;
+          fileInput.dispatchEvent(new Event('change'));
+        }
+      });
+
+      uploadBox.addEventListener("click", () => {
+        fileInput.click();
+      });
+    };
+  </script>
+</head>
+<body>
+  <h1>House Price Prediction</h1>
+  <form action="/predict" method="POST" enctype="multipart/form-data">
+     <div class="grid">
+  <div class="form-group">
+    <label for="location">Location</label>
+    <select name="Location" id="location" required>
+      <option value="">Select Location</option>
+      <option value="New York" {{ 'selected' if form_data.get('Location') == 'New York' else '' }}>New York</option>
+      <option value="Los Angeles" {{ 'selected' if form_data.get('Location') == 'Los Angeles' else '' }}>Los Angeles</option>
+      <option value="Chicago" {{ 'selected' if form_data.get('Location') == 'Chicago' else '' }}>Chicago</option>
+      <option value="Houston" {{ 'selected' if form_data.get('Location') == 'Houston' else '' }}>Houston</option>
+      <option value="Phoenix" {{ 'selected' if form_data.get('Location') == 'Phoenix' else '' }}>Phoenix</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="area">Area (sq ft)</label>
+    <input type="number" name="Area" id="area" required value="{{ form_data.get('Area', '') }}">
+  </div>
+
+  <div class="form-group">
+    <label for="bhk">BHK</label>
+    <input type="number" name="BHK" id="bhk" required value="{{ form_data.get('BHK', '') }}">
+  </div>
+
+  <div class="form-group">
+    <label for="bathrooms">Bathrooms</label>
+    <input type="number" name="Bathrooms" id="bathrooms" required value="{{ form_data.get('Bathrooms', '') }}">
+  </div>
+
+  <div class="form-group">
+    <label for="property_type">Property Type</label>
+    <select name="Property_Type" id="property_type" required>
+      <option value="">Select Property Type</option>
+      <option value="Apartment" {{ 'selected' if form_data.get('Property_Type') == 'Apartment' else '' }}>Apartment</option>
+      <option value="Villa" {{ 'selected' if form_data.get('Property_Type') == 'Villa' else '' }}>Villa</option>
+      <option value="Independent" {{ 'selected' if form_data.get('Property_Type') == 'Independent' else '' }}>Independent</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="age">Age of Property</label>
+    <input type="number" name="Age" id="age" required value="{{ form_data.get('Age', '') }}">
+  </div>
+
+  <div class="form-group">
+    <label for="furnishing">Furnishing</label>
+    <select name="Furnishing" id="furnishing" required>
+      <option value="">Select Furnishing</option>
+      <option value="Fully" {{ 'selected' if form_data.get('Furnishing') == 'Fully' else '' }}>Fully</option>
+      <option value="Semi" {{ 'selected' if form_data.get('Furnishing') == 'Semi' else '' }}>Semi</option>
+      <option value="Unfurnished" {{ 'selected' if form_data.get('Furnishing') == 'Unfurnished' else '' }}>Unfurnished</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="floor_number">Floor Number</label>
+    <input type="number" name="Floor_Number" id="floor_number" required value="{{ form_data.get('Floor_Number', '') }}">
+  </div>
+
+  <div class="form-group">
+    <label for="total_floors">Total Floors</label>
+    <input type="number" name="Total_Floors" id="total_floors" required value="{{ form_data.get('Total_Floors', '') }}">
+  </div>
+
+  <div class="form-group">
+    <label for="parking">Parking</label>
+    <input type="number" name="Parking" id="parking" required value="{{ form_data.get('Parking', '') }}">
+  </div>
+
+  <div class="form-group">
+    <label for="proximity">Proximity</label>
+    <input type="number" name="proximity" id="proximity" required value="{{ form_data.get('proximity', '') }}">
+  </div>
+</div>
+
+
+    <div class="bottom-section">
+      <div class="upload-section">
+        <div id="upload-box" class="upload-box">
+          <p><strong>Upload Image</strong></p>
+          <p class="upload-label">or drop a file</p>
+          <input type="file" name="image" id="image-upload" accept="image/*" />
+          <img id="preview-image" src="#" alt="Preview" />
+          <span id="remove-image" title="Remove Image">×</span>
+        </div>
+
+        <!-- Server-side uploaded image preview -->
+        {% if uploaded_image_url %}
+        <div class="uploaded-image">
+          <p><strong>Uploaded Image:</strong></p>
+          <img src="{{ url_for('static', filename='uploads/' + uploaded_image_url) }}" alt="Uploaded Image" />
+        </div>
+        {% endif %}
+      </div>
+
+      <div class="prediction-area">
+        <div class="result">
+          <label>Prediction:</label>
+          <p>{{ prediction }}</p>
+        </div>
+        <button type="submit">Calculate</button>
+      </div>
+    </div>
+  </form>
+</body>
+</html>

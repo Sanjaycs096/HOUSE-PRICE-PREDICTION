@@ -1,0 +1,72 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>House Price Prediction</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background: url("{{ url_for('static', filename='backgrounds/ab2.jpg') }}") no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      margin: 0;
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .container {
+      text-align: center;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 60px 30px;
+      border-radius: 12px;
+      max-width: 600px;
+      margin: 100px auto;
+      animation: slideUp 1s ease-out;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    .description {
+      font-size: 1.1em;
+      margin-bottom: 30px;
+      color: #e0e0e0;
+    }
+
+    .button {
+      padding: 12px 35px;
+      background: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 1em;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .button:hover {
+      background: #0056b3;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>House Price Predictor</h1>
+    <p class="description">Estimate the value of a house based on location, area, and other features using AI-powered prediction.</p>
+    <a href="/predict" class="button">Lets Predict ➡️</a>
+  </div>
+</body>
+</html>
