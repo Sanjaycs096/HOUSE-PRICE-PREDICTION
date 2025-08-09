@@ -16,10 +16,10 @@ It also allows image uploads to assist in prediction, making it user-friendly fo
 
 ## 📸 Screenshots
 ### Prediction Form
-![Prediction Form](assets/form_screenshot.png)
+![Prediction Form](assets/predict(1).png)(assets/predict(2).png)
 
 ### Home Page
-![Home Page](assets/home_screenshot.png)
+![Home Page](assets/home.png)
 
 ---
 
