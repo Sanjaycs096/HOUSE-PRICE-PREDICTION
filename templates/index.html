@@ -1,72 +1,33 @@
-<!-- templates/index.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>House Price Prediction</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 40px;
-      background: url("{{ url_for('static', filename='backgrounds/ab2.jpg') }}") no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
-      margin: 0;
-      animation: fadeIn 1s ease-in;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .container {
-      text-align: center;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 60px 30px;
-      border-radius: 12px;
-      max-width: 600px;
-      margin: 100px auto;
-      animation: slideUp 1s ease-out;
-    }
-
-    @keyframes slideUp {
-      from { transform: translateY(30px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
-
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
-    }
-
-    .description {
-      font-size: 1.1em;
-      margin-bottom: 30px;
-      color: #e0e0e0;
-    }
-
-    .button {
-      padding: 12px 35px;
-      background: #007bff;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-size: 1em;
-      transition: background 0.3s, transform 0.3s;
-    }
-
-    .button:hover {
-      background: #0056b3;
-      transform: scale(1.05);
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>House Price Predictor</h1>
-    <p class="description">Estimate the value of a house based on location, area, and other features using AI-powered prediction.</p>
-    <a href="/predict" class="button">Lets Predict ➡️</a>
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="hero-copy" data-aos="fade-up">
+      <h1>AI-Powered Smart House Price Prediction</h1>
+      <p>Accurate market estimates using image and tabular AI models — beautifully designed, fast, and secure.</p>
+      <div class="hero-cta">
+        <a href="/predict" class="btn primary">Predict Now</a>
+        <a href="/features" class="btn ghost">Explore Features</a>
+      </div>
+    </div>
+    <div class="hero-visual" data-aos="zoom-in">
+      <div class="glass-card">
+        <img src="/static/backgrounds/sample.jpg" alt="house"/>
+      </div>
+    </div>
   </div>
-</body>
-</html>
+</section>
+
+<section id="market" class="container">
+  <h2 data-aos="fade-up">Market Trends</h2>
+  <p class="muted" data-aos="fade-up" data-aos-delay="50">Average prices by city (based on dataset)</p>
+  <div class="card" data-aos="fade-up" data-aos-delay="100">
+    <canvas id="market-chart" height="160"></canvas>
+  </div>
+  <script>
+    // market chart is initialized in static/js/main.js
+  </script>
+</section>
+
+{% endblock %}

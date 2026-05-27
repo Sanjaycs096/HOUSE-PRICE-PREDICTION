@@ -1,0 +1,10 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Local environment
+.venv/
+
+# Runtime app data
+static/uploads/
+data/predictions.json

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AI House favicon">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7b61ff"/>
+      <stop offset="100%" stop-color="#4cd7ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="#09111f"/>
+  <path d="M14 31.5L32 16l18 15.5V50a4 4 0 0 1-4 4H18a4 4 0 0 1-4-4V31.5z" fill="url(#g)"/>
+  <path d="M24 51V36h16v15" fill="#09111f" opacity="0.55"/>
+  <path d="M24 39h16" stroke="#09111f" stroke-width="2" opacity="0.5"/>
+  <path d="M38 22l4 4m-4 0l4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity="0.95"/>
+  <path d="M22 44h20" stroke="#fff" stroke-width="1.8" stroke-linecap="round" opacity="0.35"/>
+</svg>

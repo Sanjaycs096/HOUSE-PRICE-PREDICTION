@@ -1,374 +1,153 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Predict</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', sans-serif;
-    }
-
-    body {
-      background: url("{{ url_for('static', filename='backgrounds/ab3.jpg') }}") no-repeat center center fixed;
-      background-size: cover;
-      padding: 40px;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
-      font-size: 2.5em;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      animation: slideIn 0.7s ease-in-out;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      width: 100%;
-      max-width: 1000px;
-      margin-bottom: 30px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .form-group label {
-      margin-bottom: 5px;
-      font-weight: 600;
-    }
-
-    .form-group input,
-    .form-group select {
-      padding: 10px;
-      font-size: 1em;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      width: 100%;
-    }
-
-    .bottom-section {
-      display: flex;
-      gap: 30px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .upload-section {
-      background: #fff;
-      border-radius: 20px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      padding: 30px;
-      text-align: center;
-      width: 320px;
-      position: relative;
-    }
-
-    .upload-box {
-      border: 2px dashed #007bff;
-      padding: 40px 20px;
-      border-radius: 16px;
-      cursor: pointer;
-      transition: background 0.3s;
-      position: relative;
-    }
-
-    .upload-box:hover {
-      background-color: #f0f8ff;
-    }
-
-    .upload-box.dragover {
-      background-color: #e6f2ff;
-    }
-
-    .upload-box input[type="file"] {
-      display: none;
-    }
-
-    .upload-label {
-      color: #666;
-      font-size: 0.95em;
-      margin-top: 15px;
-    }
-
-    #preview-image {
-      display: none;
-      max-width: 100%;
-      margin-top: 15px;
-      border-radius: 12px;
-    }
-
-    #remove-image {
-      display: none;
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 20px;
-      color: red;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    #remove-image:hover {
-      color: darkred;
-    }
-
-    .prediction-area {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      background: white;
-      border-radius: 20px;
-      padding: 30px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-      width: 320px;
-    }
-
-    .result {
-      font-size: 1.2em;
-      margin-bottom: 20px;
-    }
-
-    .result label {
-      font-weight: bold;
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    .uploaded-image {
-      margin-top: 10px;
-      width: 100%;
-    }
-
-    .uploaded-image img {
-      width: 100%;
-      border-radius: 12px;
-      margin-top: 10px;
-    }
-
-    button[type="submit"] {
-      padding: 12px 30px;
-      background: green;
-      color: white;
-      border: none;
-      font-size: 1em;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    button[type="submit"]:hover {
-      background: darkgreen;
-    }
-
-    @keyframes slideIn {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .bottom-section {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .upload-section, .prediction-area {
-        width: 100%;
-        max-width: 90%;
-      }
-    }
-  </style>
-
-  <script>
-    window.onload = () => {
-      const fileInput = document.getElementById("image-upload");
-      const uploadBox = document.getElementById("upload-box");
-      const previewImage = document.getElementById("preview-image");
-      const removeImage = document.getElementById("remove-image");
-      const textInputs = document.querySelectorAll(".grid input, .grid select");
-
-      fileInput.addEventListener("change", () => {
-        const file = fileInput.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = (e) => {
-            previewImage.src = e.target.result;
-            previewImage.style.display = "block";
-            removeImage.style.display = "block";
-          };
-          reader.readAsDataURL(file);
-        }
-
-        const isImageUploaded = fileInput.files.length > 0;
-        textInputs.forEach(input => input.disabled = isImageUploaded);
-      });
-
-      removeImage.addEventListener("click", () => {
-        fileInput.value = "";
-        previewImage.style.display = "none";
-        removeImage.style.display = "none";
-        textInputs.forEach(input => input.disabled = false);
-      });
-
-      textInputs.forEach(input => {
-        input.addEventListener("input", () => {
-          const anyFilled = Array.from(textInputs).some(inp => inp.value.trim() !== "");
-          fileInput.disabled = anyFilled;
-        });
-      });
-
-      uploadBox.addEventListener("dragover", (e) => {
-        e.preventDefault();
-        uploadBox.classList.add("dragover");
-      });
-
-      uploadBox.addEventListener("dragleave", () => {
-        uploadBox.classList.remove("dragover");
-      });
-
-      uploadBox.addEventListener("drop", (e) => {
-        e.preventDefault();
-        uploadBox.classList.remove("dragover");
-        const files = e.dataTransfer.files;
-        if (files.length > 0) {
-          fileInput.files = files;
-          fileInput.dispatchEvent(new Event('change'));
-        }
-      });
-
-      uploadBox.addEventListener("click", () => {
-        fileInput.click();
-      });
-    };
-  </script>
-</head>
-<body>
-  <h1>House Price Prediction</h1>
-  <form action="/predict" method="POST" enctype="multipart/form-data">
-     <div class="grid">
-  <div class="form-group">
-    <label for="location">Location</label>
-    <select name="Location" id="location" required>
-      <option value="">Select Location</option>
-      <option value="New York" {{ 'selected' if form_data.get('Location') == 'New York' else '' }}>New York</option>
-      <option value="Los Angeles" {{ 'selected' if form_data.get('Location') == 'Los Angeles' else '' }}>Los Angeles</option>
-      <option value="Chicago" {{ 'selected' if form_data.get('Location') == 'Chicago' else '' }}>Chicago</option>
-      <option value="Houston" {{ 'selected' if form_data.get('Location') == 'Houston' else '' }}>Houston</option>
-      <option value="Phoenix" {{ 'selected' if form_data.get('Location') == 'Phoenix' else '' }}>Phoenix</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="area">Area (sq ft)</label>
-    <input type="number" name="Area" id="area" required value="{{ form_data.get('Area', '') }}">
-  </div>
-
-  <div class="form-group">
-    <label for="bhk">BHK</label>
-    <input type="number" name="BHK" id="bhk" required value="{{ form_data.get('BHK', '') }}">
-  </div>
-
-  <div class="form-group">
-    <label for="bathrooms">Bathrooms</label>
-    <input type="number" name="Bathrooms" id="bathrooms" required value="{{ form_data.get('Bathrooms', '') }}">
-  </div>
-
-  <div class="form-group">
-    <label for="property_type">Property Type</label>
-    <select name="Property_Type" id="property_type" required>
-      <option value="">Select Property Type</option>
-      <option value="Apartment" {{ 'selected' if form_data.get('Property_Type') == 'Apartment' else '' }}>Apartment</option>
-      <option value="Villa" {{ 'selected' if form_data.get('Property_Type') == 'Villa' else '' }}>Villa</option>
-      <option value="Independent" {{ 'selected' if form_data.get('Property_Type') == 'Independent' else '' }}>Independent</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="age">Age of Property</label>
-    <input type="number" name="Age" id="age" required value="{{ form_data.get('Age', '') }}">
-  </div>
-
-  <div class="form-group">
-    <label for="furnishing">Furnishing</label>
-    <select name="Furnishing" id="furnishing" required>
-      <option value="">Select Furnishing</option>
-      <option value="Fully" {{ 'selected' if form_data.get('Furnishing') == 'Fully' else '' }}>Fully</option>
-      <option value="Semi" {{ 'selected' if form_data.get('Furnishing') == 'Semi' else '' }}>Semi</option>
-      <option value="Unfurnished" {{ 'selected' if form_data.get('Furnishing') == 'Unfurnished' else '' }}>Unfurnished</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="floor_number">Floor Number</label>
-    <input type="number" name="Floor_Number" id="floor_number" required value="{{ form_data.get('Floor_Number', '') }}">
-  </div>
-
-  <div class="form-group">
-    <label for="total_floors">Total Floors</label>
-    <input type="number" name="Total_Floors" id="total_floors" required value="{{ form_data.get('Total_Floors', '') }}">
-  </div>
-
-  <div class="form-group">
-    <label for="parking">Parking</label>
-    <input type="number" name="Parking" id="parking" required value="{{ form_data.get('Parking', '') }}">
-  </div>
-
-  <div class="form-group">
-    <label for="proximity">Proximity</label>
-    <input type="number" name="proximity" id="proximity" required value="{{ form_data.get('proximity', '') }}">
-  </div>
-</div>
-
-
-    <div class="bottom-section">
-      <div class="upload-section">
-        <div id="upload-box" class="upload-box">
-          <p><strong>Upload Image</strong></p>
-          <p class="upload-label">or drop a file</p>
-          <input type="file" name="image" id="image-upload" accept="image/*" />
-          <img id="preview-image" src="#" alt="Preview" />
-          <span id="remove-image" title="Remove Image">×</span>
+{% extends 'base.html' %}
+{% block title %}Predict{% endblock %}
+{% block content %}
+<section class="predict container">
+  <div class="predict-grid">
+    <div class="form-panel" data-aos="fade-right">
+      <h2>Predict Property Price</h2>
+        <div class="section-divider">Input Prediction</div>
+      <form id="predict-form" action="#" method="post" enctype="multipart/form-data">
+        <div class="field-group">
+          <label>Location <span class="required">*</span></label>
+          <input class="tabular-field" name="Location" placeholder="e.g. Bangalore, Whitefield" />
+        </div>
+        <div class="field-group">
+          <label>Area (sqft) <span class="required">*</span></label>
+          <input class="tabular-field" name="Area" type="number" placeholder="e.g. 1200" />
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label>BHK <span class="required">*</span></label>
+            <input class="tabular-field" name="BHK" type="number" placeholder="e.g. 2" />
+          </div>
+          <div class="field-group">
+            <label>Bathrooms <span class="required">*</span></label>
+            <input class="tabular-field" name="Bathrooms" type="number" placeholder="e.g. 2" />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label>Property Type <span class="required">*</span></label>
+            <select class="tabular-field" name="Property_Type">
+              <option value="">Select Property Type</option>
+              <option value="Apartment">Apartment</option>
+              <option value="Villa">Villa</option>
+              <option value="Independent">Independent</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>Age of Property <span class="required">*</span></label>
+            <input class="tabular-field" name="Age" type="number" min="0" placeholder="e.g. 5" />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label>Furnishing <span class="required">*</span></label>
+            <select class="tabular-field" name="Furnishing">
+              <option value="">Select Furnishing</option>
+              <option value="Fully">Fully</option>
+              <option value="Semi">Semi</option>
+              <option value="Unfurnished">Unfurnished</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label>Floor Number <span class="required">*</span></label>
+            <input class="tabular-field" name="Floor_Number" type="number" min="0" placeholder="e.g. 7" />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label>Total Floors <span class="required">*</span></label>
+            <input class="tabular-field" name="Total_Floors" type="number" min="0" placeholder="e.g. 10" />
+          </div>
+          <div class="field-group">
+            <label>Parking <span class="required">*</span></label>
+            <input class="tabular-field" name="Parking" type="number" min="0" placeholder="e.g. 1" />
+          </div>
+        </div>
+        <div class="field-group">
+          <label>Proximity <span class="required">*</span></label>
+          <input class="tabular-field" name="proximity" type="number" step="0.1" min="0" placeholder="e.g. 3.5" />
         </div>
 
-        <!-- Server-side uploaded image preview -->
-        {% if uploaded_image_url %}
-        <div class="uploaded-image">
-          <p><strong>Uploaded Image:</strong></p>
-          <img src="{{ url_for('static', filename='uploads/' + uploaded_image_url) }}" alt="Uploaded Image" />
+        <div class="predict-actions predict-actions-top">
+          <button id="tabular-predict-btn" type="button" class="btn primary">Calculate Input</button>
         </div>
-        {% endif %}
-      </div>
 
-      <div class="prediction-area">
-        <div class="result">
-          <label>Prediction:</label>
-          <p>{{ prediction }}</p>
+        <div class="separator">— OR —</div>
+        <div class="section-divider">Image Prediction</div>
+        <div class="field-group">
+          <label>Upload Image (optional)</label>
+          <input id="image-input" name="image" type="file" accept="image/*" />
+          <div class="muted small">You can either fill the form above <strong>or</strong> upload an image and calculate.</div>
+          <div class="preview-block">
+            <img id="preview-img" src="" alt="preview" style="display:none;max-width:100%;border-radius:8px;" />
+          </div>
         </div>
-        <button type="submit">Calculate</button>
+        <div class="predict-actions predict-actions-bottom">
+          <button id="image-predict-btn" type="button" class="btn primary">Calculate Image</button>
+        </div>
+      </form>
+    </div>
+    <div class="result-panel" data-aos="fade-left">
+      <div class="glass-card result-card">
+        <h3><div class="section-divider">Result</div></h3>
+        <div id="result-area">
+          <div class="result-top">
+            <div class="result-info">
+              <div id="result-value" class="result-value muted">Enter property details or upload an image to see predictions.</div>
+              <div id="result-meta" class="muted small"></div>
+            </div>
+          </div>
+          <div class="chart-wrap">
+            <canvas id="price-chart" height="160"></canvas>
+          </div>
+          <div class="history-wrap">
+            <div class="history-header">
+              <h4>Prediction History</h4>
+              <div>
+                <button id="clear-history" class="btn ghost">Clear</button>
+              </div>
+            </div>
+            <ul id="history-list" class="history-list"></ul>
+          </div><br>
+          <div class="mortgage-wrap" style="margin-top:1rem">
+            <h4><div class="section-divider">Mortgage Calculator</div></h4>
+            <div class="mortgage-form">
+              <div class="field-group">
+                <label>Property Price</label>
+                <input id="mortgage-price" type="number" placeholder="e.g. 6500000" />
+              </div>
+              <div class="field-row">
+                <div class="field-group">
+                  <label>Down Payment (%)</label>
+                  <input id="mortgage-down" type="number" value="20" placeholder="e.g. 20" />
+                </div>
+                <div class="field-group">
+                  <label>Interest Rate (%)</label>
+                  <input id="mortgage-rate" type="number" value="7" step="0.01" placeholder="e.g. 7.5" />
+                </div>
+              </div>
+              <div class="field-row">
+                <div class="field-group">
+                  <label>Term (years)</label>
+                  <input id="mortgage-term" type="number" value="20" placeholder="e.g. 20" />
+                </div>
+                <div class="field-group">
+                  <label></label>
+                  <button id="mortgage-calc" type="button" class="btn primary">Compute</button>
+                </div>
+              </div>
+              <div class="mortgage-result muted small" id="mortgage-result" style="margin-top:0.75rem">Monthly payment: —</div>
+              <div class="chart-wrap" style="margin-top:0.5rem"><canvas id="mortgage-chart" height="120"></canvas></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </form>
-</body>
-</html>
+  </div>
+</section>
+
+<script src="/static/js/predict.js"></script>
+
+{% endblock %}
