@@ -1,88 +1,55 @@
-from flask import Flask, request, render_template
+from flask import Flask, session
+from config import DevConfig
+from routes import register_blueprints
+from extensions import limiter, talisman
 import os
-import numpy as np
-import cv2
-import joblib
-from tensorflow.keras.models import load_model
+import secrets
 
-app = Flask(__name__)
 
-# Configure upload folder
-UPLOAD_FOLDER = os.path.join('static', 'uploads')
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-# Load models
-image_model = load_model('models/image_model.h5', compile=False)                    # CNN image model
-price_scaler = joblib.load('models/price_scaler.pkl')                # Scaler for price normalization
-tabular_model = joblib.load('models/model.pkl')                      # Tabular ML model
-label_encoders = joblib.load('models/encoders.pkl')                  # Encoders for categorical values
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+def create_app(config_object=DevConfig):
+    app = Flask(__name__, static_folder='static', template_folder='templates')
+    app.config.from_object(config_object)
 
-@app.route('/predict', methods=['GET', 'POST'])
-def predict():
-    prediction = None
-    form_data = {}
-    uploaded_image_url = None
+    # Ensure upload folder exists
+    os.makedirs(app.config.get('UPLOAD_FOLDER', 'static/uploads'), exist_ok=True)
 
-    if request.method == 'POST':
-        form_data = request.form.to_dict()
-        image_file = request.files.get('image')
+    # Initialize security extensions
+    limiter.init_app(app)
+    # Basic CSP - allow self resources and data: for images
+    csp = {
+        'default-src': ["'self'"],
+        'img-src': ["'self'", 'data:'],
+        'script-src': ["'self'", "'unsafe-inline'", 'https://cdn.jsdelivr.net', 'https://unpkg.com', 'https://cdnjs.cloudflare.com'],
+        'style-src': ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
+        'font-src': ['https://fonts.gstatic.com', 'https://fonts.googleapis.com']
+    }
+    # Don't force HTTPS redirects in debug mode (use HTTPS in production)
+    talisman.init_app(app, content_security_policy=csp, force_https=not app.debug)
 
-        if image_file and image_file.filename != '':
-            os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
-            image_path = os.path.join(app.config['UPLOAD_FOLDER'], image_file.filename)
-            image_file.save(image_path)
+    # Ensure a CSRF token exists in session
+    @app.before_request
+    def _ensure_csrf():
+        if 'csrf_token' not in session:
+            session['csrf_token'] = secrets.token_urlsafe(32)
 
-            # Normalize image path for displaying in HTML
-            uploaded_image_url = image_path.replace('static/', '', 1).replace("\\", "/")
+    @app.context_processor
+    def inject_csrf_token():
+        return {'csrf_token': session.get('csrf_token', '')}
 
-            try:
-                img = cv2.imread(image_path)
-                if img is None:
-                    raise ValueError("Uploaded image could not be read. Check file format or if it's corrupted.")
+    # Register blueprints after extensions
+    register_blueprints(app)
 
-                img = cv2.resize(img, (100, 100)).astype('float32') / 255.0
-                img = np.expand_dims(img, axis=0)
+    # Generic error handler for production to avoid leaking traces
+    @app.errorhandler(Exception)
+    def handle_exception(e):
+        app.logger.exception('Unhandled exception')
+        return ('Internal server error', 500)
 
-                scaled_pred = image_model.predict(img)[0][0]
-                actual_price = price_scaler.inverse_transform([[scaled_pred]])[0][0]
-                prediction = f"🏠 Predicted Price from image: ₹{actual_price:,.0f}"
+    return app
 
-            except Exception as e:
-                prediction = f"❌ Image Prediction Error: {str(e)}"
-                uploaded_image_url = image_file.filename
 
-        else:
-            try:
-                # Apply label encoding to categorical fields
-                location = label_encoders['Location'].transform([form_data.get("Location")])[0]
-                property_type = label_encoders['Property_Type'].transform([form_data.get("Property_Type")])[0]
-                furnishing = label_encoders['Furnishing'].transform([form_data.get("Furnishing")])[0]
-
-                features = [
-                    location,
-                    float(form_data.get("Area")),
-                    int(form_data.get("BHK")),
-                    int(form_data.get("Bathrooms")),
-                    property_type,
-                    int(form_data.get("Age")),
-                    furnishing,
-                    int(form_data.get("Floor_Number")),
-                    int(form_data.get("Total_Floors")),
-                    int(form_data.get("Parking")),
-                    int(form_data.get("proximity"))
-                ]
-
-                pred = tabular_model.predict([features])[0]
-                prediction = f"🏠 Predicted Price from form: ₹{pred:,.0f}"
-
-            except Exception as e:
-                prediction = f"❌ Form Prediction Error: {str(e)}"
-
-    return render_template("predict.html", prediction=prediction, form_data=form_data, uploaded_image_url=uploaded_image_url)
-
-if __name__ == "__main__":
-    app.run(debug=True)
+if __name__ == '__main__':
+    app = create_app()
+    app.run(host='0.0.0.0', port=5000, debug=True)
