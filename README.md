@@ -69,10 +69,6 @@ It also allows image uploads to assist in prediction, making it user-friendly fo
 
 ---
 
-## 📜 License
-This project is licensed under the MIT License – feel free to use and modify.
-
----
 
 ## 💡 Future Improvements
 - Add **image classification** to verify if the uploaded image is actually a house before price prediction.
