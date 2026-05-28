@@ -1,5 +1,11 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
+  "functions": {
+    "api/**/*.py": {
+      "excludeFiles": "{models/**,dataset/**,data/**,assets/**,static/backgrounds/**,static/uploads/**,train_model*.py,requirements-local.txt,.venv/**,__pycache__/**}"
+    }
+  },
   "builds": [
     { "src": "api/index.py", "use": "@vercel/python" }
   ],
