@@ -82,7 +82,7 @@ This repository includes a small integration to run the Flask app on Vercel usin
 Notes before deploying:
 - Vercel imposes size and execution time limits. Large model files in `models/` (TensorFlow/Keras HDF5 files) may exceed Vercel limits and are not recommended to be deployed directly on Vercel. If your models are large, host them on a model-serving service (e.g., AWS SageMaker, Azure ML, or a small VM) and call that API from this app.
 - The repository includes a `.python-version` file pinned to Python `3.12`, which matches Vercel's supported Python runtime.
-- Vercel now reads `pyproject.toml` for the deploy-safe dependency list and `api/index.py` for the entrypoint; `vercel.json` only keeps the route mapping.
+- Vercel uses `.python-version`, `requirements.txt`, and `api/index.py` directly; `vercel.json` only keeps the route mapping.
 - TensorFlow and Keras are kept in `requirements-local.txt` for local development.
 - Ensure `SECRET_KEY` and other sensitive environment variables are set in Vercel dashboard for the project.
 
@@ -94,7 +94,7 @@ Quick deployment steps:
    vercel login
    ```
 
-2. Ensure `pyproject.toml` is committed with the Vercel entrypoint set to `api.index:app`.
+2. Ensure `api/index.py` exposes `app = create_app()` and that `requirements.txt` stays limited to deploy-safe packages.
 
 3. Create a new Vercel project and connect your GitHub repository, or deploy directly from CLI:
    ```bash
