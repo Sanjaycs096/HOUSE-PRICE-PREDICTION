@@ -1,45 +1,19 @@
 import os
 import joblib
 import numpy as np
+from PIL import Image
 
 try:
-    import cv2
+    import onnxruntime as ort
 except Exception:
-    cv2 = None
-
-
-try:
-    from tensorflow.keras.models import load_model
-    from tensorflow.keras.layers import InputLayer
-    from tensorflow.keras.mixed_precision import Policy
-    _TF_AVAILABLE = True
-except Exception:
-    load_model = None
-    InputLayer = object
-    Policy = object
-    _TF_AVAILABLE = False
-
-
-# Compatibility shims for legacy H5 models
-class CompatibleInputLayer(InputLayer):
-    @classmethod
-    def from_config(cls, config):
-        config = dict(config)
-        if "batch_shape" in config and "batch_input_shape" not in config:
-            config["batch_input_shape"] = config.pop("batch_shape")
-        return super().from_config(config)
-
-
-class CompatibleDTypePolicy(Policy):
-    @classmethod
-    def from_config(cls, config):
-        return Policy(config.get("name", "float32"))
+    ort = None
 
 
 class ModelService:
     def __init__(self, models_dir='models'):
         self.models_dir = models_dir
         self.image_model = None
+        self.image_session = None
         self.tabular_model = None
         self.price_scaler = None
         self.encoders = None
@@ -47,16 +21,9 @@ class ModelService:
 
     def _load_models(self):
         # Load image model
-        image_path = os.path.join(self.models_dir, 'image_model.h5')
-        if _TF_AVAILABLE and os.path.exists(image_path):
-            self.image_model = load_model(
-                image_path,
-                compile=False,
-                custom_objects={
-                    "InputLayer": CompatibleInputLayer,
-                    "DTypePolicy": CompatibleDTypePolicy,
-                },
-            )
+        image_path = os.path.join(self.models_dir, 'image_model.onnx')
+        if ort is not None and os.path.exists(image_path):
+            self.image_session = ort.InferenceSession(image_path, providers=['CPUExecutionProvider'])
 
         # Load tabular artifacts
         scaler_path = os.path.join(self.models_dir, 'price_scaler.pkl')
@@ -71,14 +38,17 @@ class ModelService:
             self.encoders = joblib.load(encoders_path)
 
     def predict_image(self, image_path):
-        if self.image_model is None or cv2 is None:
+        if self.image_session is None:
             raise RuntimeError('Image model not available in this deployment')
-        img = cv2.imread(image_path)
-        if img is None:
+        try:
+            img = Image.open(image_path).convert('RGB').resize((100, 100))
+        except Exception:
             raise ValueError('Invalid image')
-        img = cv2.resize(img, (100, 100)).astype('float32') / 255.0
+        img = np.asarray(img, dtype='float32') / 255.0
         img = np.expand_dims(img, axis=0)
-        scaled_pred = float(self.image_model.predict(img)[0][0])
+        input_name = self.image_session.get_inputs()[0].name
+        outputs = self.image_session.run(None, {input_name: img})
+        scaled_pred = float(np.asarray(outputs[0]).reshape(-1)[0])
         if self.price_scaler is not None:
             inverse = self.price_scaler.inverse_transform([[scaled_pred]])
             actual_price = float(inverse[0][0])

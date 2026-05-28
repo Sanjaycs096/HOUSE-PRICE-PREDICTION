@@ -7,6 +7,8 @@ class Config:
     MODELS_DIR = os.path.join(os.path.dirname(__file__), 'models')
     CACHE_TYPE = 'simple'
     MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16 MB uploads
+    ALLOWED_IMAGE_EXTENSIONS = {'jpg', 'jpeg', 'png', 'webp', 'gif'}
+    ALLOWED_IMAGE_MIME_PREFIX = 'image/'
     # Session cookie security defaults (override in ProdConfig)
     SESSION_COOKIE_HTTPONLY = True
     SESSION_COOKIE_SAMESITE = 'Lax'

@@ -84,7 +84,7 @@ Notes before deploying:
 - The repository includes a `.python-version` file pinned to Python `3.12`, which matches Vercel's supported Python runtime.
 - Vercel uses `.python-version`, `requirements.txt`, and `api/index.py` directly; `vercel.json` only keeps the route mapping.
 - TensorFlow, Keras, OpenCV, pandas, and matplotlib are kept in `requirements-local.txt` for local development.
-- The Vercel deployment is tabular-prediction focused; image prediction is disabled there to keep the serverless bundle under the size limit.
+- Image prediction on Vercel uses the exported ONNX model (`models/image_model.onnx`) so it runs without TensorFlow.
 - Ensure `SECRET_KEY` and other sensitive environment variables are set in Vercel dashboard for the project.
 
 Quick deployment steps:

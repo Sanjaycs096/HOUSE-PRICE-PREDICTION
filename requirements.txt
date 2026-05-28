@@ -4,3 +4,5 @@ scikit-learn==1.7.1
 joblib
 flask-talisman
 flask-limiter
+onnxruntime
+pillow

@@ -1,11 +1,9 @@
 flask
 pandas
 numpy==1.26.4
-matplotlib
 scikit-learn==1.7.1
 joblib
-opencv-python
-tensorflow==2.15.1
-keras==2.15.0
 flask-talisman
 flask-limiter
+onnxruntime
+pillow
