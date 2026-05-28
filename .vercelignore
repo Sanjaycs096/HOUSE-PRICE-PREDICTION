@@ -1,7 +1,6 @@
 models/image_model.h5
 dataset/socal2.csv
 assets/**
-static/backgrounds/**
 static/uploads/**
 train_model.py
 train_model_image.py

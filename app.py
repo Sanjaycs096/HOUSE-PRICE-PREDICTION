@@ -27,7 +27,8 @@ def create_app(config_object=DevConfig):
         'default-src': ["'self'"],
         'img-src': ["'self'", 'data:'],
         'script-src': ["'self'", "'unsafe-inline'", 'https://cdn.jsdelivr.net', 'https://unpkg.com', 'https://cdnjs.cloudflare.com'],
-        'style-src': ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com'],
+        'style-src': ["'self'", "'unsafe-inline'", 'https://fonts.googleapis.com', 'https://cdnjs.cloudflare.com'],
+        'connect-src': ["'self'", 'https://cdn.jsdelivr.net', 'https://unpkg.com', 'https://cdnjs.cloudflare.com'],
         'font-src': ['https://fonts.gstatic.com', 'https://fonts.googleapis.com']
     }
     # Don't force HTTPS redirects in debug mode (use HTTPS in production)
