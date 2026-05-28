@@ -1,10 +1,18 @@
 import os
 import joblib
 import numpy as np
-from tensorflow.keras.models import load_model
-from tensorflow.keras.layers import InputLayer
-from tensorflow.keras.mixed_precision import Policy
 import cv2
+
+try:
+    from tensorflow.keras.models import load_model
+    from tensorflow.keras.layers import InputLayer
+    from tensorflow.keras.mixed_precision import Policy
+    _TF_AVAILABLE = True
+except Exception:
+    load_model = None
+    InputLayer = object
+    Policy = object
+    _TF_AVAILABLE = False
 
 
 # Compatibility shims for legacy H5 models
@@ -35,7 +43,7 @@ class ModelService:
     def _load_models(self):
         # Load image model
         image_path = os.path.join(self.models_dir, 'image_model.h5')
-        if os.path.exists(image_path):
+        if _TF_AVAILABLE and os.path.exists(image_path):
             self.image_model = load_model(
                 image_path,
                 compile=False,
@@ -59,7 +67,7 @@ class ModelService:
 
     def predict_image(self, image_path):
         if self.image_model is None:
-            raise RuntimeError('Image model not loaded')
+            raise RuntimeError('Image model not available in this deployment')
         img = cv2.imread(image_path)
         if img is None:
             raise ValueError('Invalid image')

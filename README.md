@@ -19,7 +19,7 @@ It also allows image uploads to assist in prediction, making it user-friendly fo
 - **Backend**: Python (Flask / FastAPI)
 - **Machine Learning**: Scikit-learn / TensorFlow / Pandas / NumPy
 - **Deployment**: GitHub, Heroku / Render
- - **Serverless Deployment**: Vercel (Python serverless functions)
+- **Serverless Deployment**: Vercel (Python serverless functions)
 
 ---
 
@@ -74,7 +74,8 @@ This repository includes a small integration to run the Flask app on Vercel usin
 
 Notes before deploying:
 - Vercel imposes size and execution time limits. Large model files in `models/` (TensorFlow/Keras HDF5 files) may exceed Vercel limits and are not recommended to be deployed directly on Vercel. If your models are large, host them on a model-serving service (e.g., AWS SageMaker, Azure ML, or a small VM) and call that API from this app.
-- The repository includes a `.python-version` file pinned to Python `3.11`, which matches the TensorFlow wheel used by this project and avoids the Vercel Python `3.12` dependency resolution failure.
+- The repository includes a `.python-version` file pinned to Python `3.12`, which matches Vercel's supported Python runtime.
+- TensorFlow and Keras are installed only on non-Linux environments via `requirements.txt` markers. On Vercel, the image prediction path is disabled gracefully if TensorFlow is unavailable, while tabular prediction and the rest of the site still deploy.
 - Ensure `SECRET_KEY` and other sensitive environment variables are set in Vercel dashboard for the project.
 
 Quick deployment steps:

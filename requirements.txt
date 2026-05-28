@@ -5,8 +5,8 @@ matplotlib
 scikit-learn==1.7.1
 joblib
 opencv-python
-tensorflow==2.15.1
-keras==2.15.0
+tensorflow==2.15.1; sys_platform != "linux"
+keras==2.15.0; sys_platform != "linux"
 flask-talisman
 flask-limiter
 vercel-wsgi
