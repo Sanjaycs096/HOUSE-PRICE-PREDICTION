@@ -16,8 +16,7 @@ dependencies = [
   "opencv-python",
   "flask-talisman",
   "flask-limiter",
-  "vercel-wsgi",
 ]
 
 [tool.vercel]
-entrypoint = "api.index:handler"
+entrypoint = "api.index:app"

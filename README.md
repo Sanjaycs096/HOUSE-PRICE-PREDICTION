@@ -94,7 +94,7 @@ Quick deployment steps:
    vercel login
    ```
 
-2. Ensure `requirements.txt` includes `vercel-wsgi` (already added).
+2. Ensure `pyproject.toml` is committed with the Vercel entrypoint set to `api.index:app`.
 
 3. Create a new Vercel project and connect your GitHub repository, or deploy directly from CLI:
    ```bash
