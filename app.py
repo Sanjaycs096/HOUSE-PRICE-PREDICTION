@@ -12,8 +12,13 @@ def create_app(config_object=DevConfig):
     app = Flask(__name__, static_folder='static', template_folder='templates')
     app.config.from_object(config_object)
 
-    # Ensure upload folder exists
-    os.makedirs(app.config.get('UPLOAD_FOLDER', 'static/uploads'), exist_ok=True)
+    # Vercel uses a read-only filesystem for the deployed app bundle.
+    # Use /tmp for any runtime file writes there, but keep the local path for development.
+    upload_folder = app.config.get('UPLOAD_FOLDER', 'static/uploads')
+    if os.environ.get('VERCEL'):
+        upload_folder = os.path.join('/tmp', 'uploads')
+    app.config['UPLOAD_FOLDER'] = upload_folder
+    os.makedirs(upload_folder, exist_ok=True)
 
     # Initialize security extensions
     limiter.init_app(app)
