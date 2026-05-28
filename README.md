@@ -14,21 +14,12 @@ It also allows image uploads to assist in prediction, making it user-friendly fo
 
 ---
 
-## 📸 Screenshots
-### Prediction Form
-![Prediction Form 1](assets/predict(1).png)  
-![Prediction Form 2](assets/predict(2).png)
-
-### Home Page
-![Home Page](assets/home.png)
-
----
-
 ## ⚙️ Technologies Used
 - **Frontend**: HTML, CSS, JavaScript
 - **Backend**: Python (Flask / FastAPI)
 - **Machine Learning**: Scikit-learn / TensorFlow / Pandas / NumPy
 - **Deployment**: GitHub, Heroku / Render
+ - **Serverless Deployment**: Vercel (Python serverless functions)
 
 ---
 
@@ -74,3 +65,36 @@ It also allows image uploads to assist in prediction, making it user-friendly fo
 - Add **image classification** to verify if the uploaded image is actually a house before price prediction.
 - Improve dataset quality with more diverse property images.
 - Integrate live property market APIs for dynamic pricing.
+
+---
+
+## 📦 Deploying to Vercel (Serverless)
+
+This repository includes a small integration to run the Flask app on Vercel using a WSGI adapter.
+
+Notes before deploying:
+- Vercel imposes size and execution time limits. Large model files in `models/` (TensorFlow/Keras HDF5 files) may exceed Vercel limits and are not recommended to be deployed directly on Vercel. If your models are large, host them on a model-serving service (e.g., AWS SageMaker, Azure ML, or a small VM) and call that API from this app.
+- Ensure `SECRET_KEY` and other sensitive environment variables are set in Vercel dashboard for the project.
+
+Quick deployment steps:
+
+1. Install the Vercel CLI and login:
+   ```bash
+   npm i -g vercel
+   vercel login
+   ```
+
+2. Ensure `requirements.txt` includes `vercel-wsgi` (already added).
+
+3. Create a new Vercel project and connect your GitHub repository, or deploy directly from CLI:
+   ```bash
+   vercel --prod
+   ```
+
+4. In the Vercel project settings, set environment variables (e.g. `SECRET_KEY`) and increase function memory/timeouts if available.
+
+Troubleshooting:
+- If Chart.js or other CDN assets are blocked by CSP, check `app.py` CSP settings; adjust allowed hosts in `vercel.json` or `app.py` if needed.
+- If model files are too big: move model loading to an external API and update `services/model_service.py` to call the hosted model endpoint.
+
+If you want, I can prepare a smaller demonstration model and a streamlined deploy branch that is Vercel-compatible (removes heavy model files and serves a lightweight stubbed model for demo). Would you like that?
