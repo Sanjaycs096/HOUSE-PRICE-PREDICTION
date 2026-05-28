@@ -6,9 +6,6 @@
       "excludeFiles": "{models/**,dataset/**,data/**,assets/**,static/backgrounds/**,static/uploads/**,train_model*.py,requirements-local.txt,.venv/**,__pycache__/**}"
     }
   },
-  "builds": [
-    { "src": "api/index.py", "use": "@vercel/python" }
-  ],
   "routes": [
     { "src": "/(.*)", "dest": "api/index.py" }
   ]
