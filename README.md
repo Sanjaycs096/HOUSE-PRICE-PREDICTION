@@ -42,6 +42,11 @@ It also allows image uploads to assist in prediction, making it user-friendly fo
    pip install -r requirements.txt
    ```
 
+   If you want full local image-model support on Windows, also install:
+   ```bash
+   pip install -r requirements-local.txt
+   ```
+
 4. **Run the application**
    ```bash
    python app.py
@@ -75,7 +80,7 @@ This repository includes a small integration to run the Flask app on Vercel usin
 Notes before deploying:
 - Vercel imposes size and execution time limits. Large model files in `models/` (TensorFlow/Keras HDF5 files) may exceed Vercel limits and are not recommended to be deployed directly on Vercel. If your models are large, host them on a model-serving service (e.g., AWS SageMaker, Azure ML, or a small VM) and call that API from this app.
 - The repository includes a `.python-version` file pinned to Python `3.12`, which matches Vercel's supported Python runtime.
-- TensorFlow and Keras are installed only on non-Linux environments via `requirements.txt` markers. On Vercel, the image prediction path is disabled gracefully if TensorFlow is unavailable, while tabular prediction and the rest of the site still deploy.
+- TensorFlow and Keras are kept in `requirements-local.txt` for local development. On Vercel, only the lightweight `requirements.txt` is used so the deployment can resolve cleanly on Python 3.12.
 - Ensure `SECRET_KEY` and other sensitive environment variables are set in Vercel dashboard for the project.
 
 Quick deployment steps:
