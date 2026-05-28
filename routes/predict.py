@@ -98,6 +98,11 @@ def tabular_predict():
 @predict_bp.route('/image', methods=['POST'])
 def image_predict():
     _verify_csrf()
+    try:
+        import cv2
+    except Exception:
+        return jsonify({'ok': False, 'error': 'Image prediction is not available in this deployment'}), 503
+
     if 'image' not in request.files:
         return jsonify({'ok': False, 'error': 'No image file provided'}), 400
 
@@ -118,7 +123,6 @@ def image_predict():
 
     # Validate saved image can be read (basic check against malformed uploads)
     try:
-        import cv2
         img = cv2.imread(path)
         if img is None:
             try:

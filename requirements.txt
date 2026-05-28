@@ -1,9 +1,6 @@
 flask
-pandas
 numpy==1.26.4
-matplotlib
 scikit-learn==1.7.1
 joblib
-opencv-python
 flask-talisman
 flask-limiter

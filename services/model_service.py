@@ -1,7 +1,12 @@
 import os
 import joblib
 import numpy as np
-import cv2
+
+try:
+    import cv2
+except Exception:
+    cv2 = None
+
 
 try:
     from tensorflow.keras.models import load_model
@@ -66,7 +71,7 @@ class ModelService:
             self.encoders = joblib.load(encoders_path)
 
     def predict_image(self, image_path):
-        if self.image_model is None:
+        if self.image_model is None or cv2 is None:
             raise RuntimeError('Image model not available in this deployment')
         img = cv2.imread(image_path)
         if img is None:
