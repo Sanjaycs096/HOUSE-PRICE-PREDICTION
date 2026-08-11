@@ -1,29 +1,95 @@
 # 🏠 House Price Prediction (AI-Powered)
 
-This project is an **AI-powered House Price Prediction web application** that estimates the price of a property based on various input features such as location, area, BHK, furnishing type, property type, and other attributes.  
-It also allows image uploads to assist in prediction, making it user-friendly for both real estate agents and home buyers.
+An AI-powered web application that estimates property prices based on various input features and images.
 
----
+This tool helps real estate agents and home buyers get instant, data-driven price estimations to make informed property decisions.
 
-## 🚀 Features
+[Live Demo](#demo) · [Repository](https://github.com/Sanjaycs096/HOUSE-PRICE-PREDICTION) · [Report Bug](https://github.com/Sanjaycs096/HOUSE-PRICE-PREDICTION/issues) · [Request Feature](https://github.com/Sanjaycs096/HOUSE-PRICE-PREDICTION/issues)
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Key Features](#key-features)
+- [Demo](#demo)
+- [Architecture](#architecture)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Prerequisites](#prerequisites)
+- [Environment Variables](#environment-variables)
+- [Installation](#installation)
+- [Running Locally](#running-locally)
+- [Testing](#testing)
+- [Security](#security)
+- [Deployment](#deployment)
+- [Known Limitations](#known-limitations)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [License](#license)
+- [Author](#author)
+
+## Overview
+
+The House Price Prediction application leverages machine learning models to provide accurate real estate valuations. Users can input standard property metrics (area, BHK, location, etc.) or upload property images. The application parses these inputs through Scikit-learn and ONNX models to return a calculated price estimate.
+
+## Key Features
+
 - **Interactive Web UI** – Clean and modern design for smooth user experience.
 - **Form-Based Prediction** – Enter property details to get instant price estimation.
-- **Image Upload Support** – Upload an image of the property to assist prediction.
-- **AI/ML Model Integration** – Backend model trained on real estate datasets.
-- **Responsive Design** – Works on desktops, tablets, and mobile devices.
+- **Image Upload Support** – Upload an image of the property to assist prediction via an ONNX model.
+- **AI/ML Model Integration** – Backend models trained on comprehensive real estate datasets.
+- **Responsive Design** – Fully functional across desktops, tablets, and mobile devices.
 
----
+## Demo
 
-## ⚙️ Technologies Used
-- **Frontend**: HTML, CSS, JavaScript
-- **Backend**: Python (Flask / FastAPI)
-- **Machine Learning**: Scikit-learn / TensorFlow / Pandas / NumPy
-- **Deployment**: GitHub, Heroku / Render
-- **Serverless Deployment**: Vercel (Python serverless functions)
+Live demo is not currently available.
 
----
+## Architecture
 
-## 📂 How to Run Locally
+The application follows a monolithic client-server architecture built on Flask. The frontend uses server-side rendered Jinja2 templates (HTML/CSS/JS). The backend routing handles form submissions, normalizes data, and passes inputs to a `ModelService` which interfaces with pre-trained machine learning models (.pkl for tabular data, .onnx for image data).
+
+## Tech Stack
+
+**Frontend:** HTML, CSS, JavaScript (Vanilla)
+**Backend:** Python, Flask
+**Machine Learning:** Scikit-learn, ONNX Runtime, Pandas, NumPy, Pillow
+**Testing:** Pytest, Flake8
+**Infrastructure/Deployment:** Vercel (Serverless Functions)
+
+## Project Structure
+
+```text
+├── .github/             # GitHub configuration and actions
+├── api/                 # Vercel serverless entrypoint
+├── models/              # Pre-trained ML models (.pkl, .onnx, .h5)
+├── routes/              # Flask application routing
+├── services/            # Business logic and model integration
+├── static/              # CSS, JS, and uploads
+├── templates/           # Jinja2 HTML templates
+├── tests/               # Pytest suite
+├── app.py               # Flask application factory
+├── config.py            # Environment configuration
+└── vercel.json          # Vercel deployment config
+```
+
+## Prerequisites
+
+- Python 3.12+
+- Git
+
+## Environment Variables
+
+Copy the `.env.example` file to `.env` and configure the following variables:
+
+- `SECRET_KEY`: Used for Flask session security and CSRF protection.
+- `VERCEL`: Set to `False` for local development.
+
+## Installation
+
 1. **Clone the repository**
    ```bash
    git clone https://github.com/Sanjaycs096/HOUSE-PRICE-PREDICTION.git
@@ -41,71 +107,70 @@ It also allows image uploads to assist in prediction, making it user-friendly fo
    ```bash
    pip install -r requirements.txt
    ```
-
-   Vercel uses `pyproject.toml` and `api/index.py` directly, so the legacy `builds` and `functions` blocks are not needed.
-
-   If you want full local image-model support on Windows, also install:
+   *For local image-model support on Windows, also run:*
    ```bash
    pip install -r requirements-local.txt
    ```
 
-4. **Run the application**
-   ```bash
-   python app.py
-   ```
+## Running Locally
 
-5. **Open in browser**
-   ```
-   http://127.0.0.1:5000
-   ```
+Run the Flask development server:
 
----
+```bash
+python app.py
+```
+Then open `http://127.0.0.1:5000` in your web browser.
 
-## ⚠️ Limitation
-> **Disadvantage**:  
-> If a non-house image (such as an image of a tree, car, or unrelated object) is uploaded, the model **will still predict a house price** because it is not trained to detect whether the image is actually a house. This can lead to unrealistic outputs.
+## Testing
 
----
+To run the test suite and linters:
 
+```bash
+pip install -r requirements-test.txt
+pytest tests/
+flake8 .
+```
 
-## 💡 Future Improvements
-- Add **image classification** to verify if the uploaded image is actually a house before price prediction.
+## Security
+
+- **Rate Limiting**: Integrated `Flask-Limiter` to prevent brute-force and DDoS attacks on prediction endpoints.
+- **CSP**: Content Security Policy configured via `Flask-Talisman` to prevent XSS.
+- **CSRF Protection**: Manual CSRF token generation and validation for form submissions.
+- **File Validation**: Image uploads are strictly validated by extension and MIME type.
+
+## Deployment
+
+This repository is configured for serverless deployment on **Vercel**.
+
+1. Install the Vercel CLI: `npm i -g vercel`
+2. Login: `vercel login`
+3. Deploy: `vercel --prod`
+
+*Note: Large model files (like HDF5) may exceed Vercel's serverless size limits. The application defaults to using the optimized ONNX runtime for image predictions in production.*
+
+## Known Limitations
+
+- **Image Verification**: If a non-house image (such as an image of a tree, car, or unrelated object) is uploaded, the model will still predict a house price because it is not trained to detect whether the image is actually a house.
+
+## Roadmap
+
+- Add image classification to verify if the uploaded image is actually a house before price prediction.
 - Improve dataset quality with more diverse property images.
 - Integrate live property market APIs for dynamic pricing.
+- Migrate to a dedicated model-serving architecture for heavier models.
 
----
+## Contributing
 
-## 📦 Deploying to Vercel (Serverless)
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-This repository includes a small integration to run the Flask app on Vercel using a WSGI adapter.
+## License
 
-Notes before deploying:
-- Vercel imposes size and execution time limits. Large model files in `models/` (TensorFlow/Keras HDF5 files) may exceed Vercel limits and are not recommended to be deployed directly on Vercel. If your models are large, host them on a model-serving service (e.g., AWS SageMaker, Azure ML, or a small VM) and call that API from this app.
-- The repository includes a `.python-version` file pinned to Python `3.12`, which matches Vercel's supported Python runtime.
-- Vercel uses `.python-version`, `requirements.txt`, and `api/index.py` directly; `vercel.json` only keeps the route mapping.
-- TensorFlow, Keras, OpenCV, pandas, and matplotlib are kept in `requirements-local.txt` for local development.
-- Image prediction on Vercel uses the exported ONNX model (`models/image_model.onnx`) so it runs without TensorFlow.
-- Ensure `SECRET_KEY` and other sensitive environment variables are set in Vercel dashboard for the project.
+Distributed under the MIT License. See `LICENSE` for more information.
 
-Quick deployment steps:
+## Author
 
-1. Install the Vercel CLI and login:
-   ```bash
-   npm i -g vercel
-   vercel login
-   ```
-
-2. Ensure `api/index.py` exposes `app = create_app()`, and keep `requirements.txt` limited to the deploy-safe packages used by the Vercel runtime.
-
-3. Create a new Vercel project and connect your GitHub repository, or deploy directly from CLI:
-   ```bash
-   vercel --prod
-   ```
-
-4. In the Vercel project settings, set environment variables (e.g. `SECRET_KEY`) and increase function memory/timeouts if available.
-
-Troubleshooting:
-- If Chart.js or other CDN assets are blocked by CSP, check `app.py` CSP settings; adjust allowed hosts in `vercel.json` or `app.py` if needed.
-- If model files are too big: move model loading to an external API and update `services/model_service.py` to call the hosted model endpoint.
-
-If you want, I can prepare a smaller demonstration model and a streamlined deploy branch that is Vercel-compatible (removes heavy model files and serves a lightweight stubbed model for demo). Would you like that?
+**Sanjay** - [Sanjaycs096](https://github.com/Sanjaycs096)
